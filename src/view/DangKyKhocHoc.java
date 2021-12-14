@@ -101,7 +101,7 @@ public class DangKyKhocHoc extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Tahoma", Font.BOLD, 13));
-		textArea.setBounds(10, 240, 547, 126);
+		textArea.setBounds(10, 240, 574, 126);
 		panel_dangKyHoc.add(textArea);
 		
 		JPanel panel_ketQuaHoc = new JPanel();
