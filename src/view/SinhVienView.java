@@ -360,7 +360,7 @@ public class SinhVienView extends JFrame {
 		btn_gioiTinh.clearSelection();
 	}
 	
-	SimpleDateFormat date_Format = new SimpleDateFormat("MM/dd/yyyy");
+	SimpleDateFormat date_Format = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public void themSinhVienVaoTable(SinhVien sv) {
 		DefaultTableModel model_table = (DefaultTableModel) table.getModel();
@@ -433,8 +433,16 @@ public class SinhVienView extends JFrame {
 		int maSinhVien = Integer.valueOf(model_table.getValueAt(i_row, 0) + "");
 		String hoVaTen = model_table.getValueAt(i_row, 1) + "";
 		QueQuan tinh = QueQuan.getTinhByTen(model_table.getValueAt(i_row, 2) + "");
-		String s_ngaySinh = model_table.getValueAt(i_row, 3) + "";
-		Date ngaySinh = new Date(s_ngaySinh);
+//		String s_ngaySinh = model_table.getValueAt(i_row, 3) + "";
+//		Date ngaySinh = new Date(s_ngaySinh);
+		
+		Date ngaySinh = null;
+		try {
+			ngaySinh = date_Format.parse(model_table.getValueAt(i_row, 3) + "");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String textGioiTinh = model_table.getValueAt(i_row, 4) + "";
 		boolean gioiTinh = textGioiTinh.equals("Nam");
