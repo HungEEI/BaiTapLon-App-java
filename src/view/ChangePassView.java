@@ -84,11 +84,13 @@ public class ChangePassView extends JFrame {
 		textField_matKhauHienTai.setColumns(10);
 		
 		JButton jButton_dongY = new JButton("Đồng ý");
+		jButton_dongY.setBackground(Color.GREEN);
 		jButton_dongY.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jButton_dongY.setBounds(209, 221, 85, 32);
 		contentPane.add(jButton_dongY);
 		
 		JButton jButton_huyBo = new JButton("Hủy bỏ");
+		jButton_huyBo.setBackground(Color.RED);
 		jButton_huyBo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChangePassView.this.dispose();

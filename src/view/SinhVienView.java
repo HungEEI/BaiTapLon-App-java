@@ -52,17 +52,17 @@ public class SinhVienView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public SinhVienView() {
+		setResizable(false);
 		init();	
 	}
 	
 ///////---Form
 	public void init() {
 		this.model = new SinhVienModel();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);	
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\student.png"));
 		this.setSize(880, 617);
 		this.setLocationRelativeTo(null);
-		this.setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(245, 245, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -433,8 +433,6 @@ public class SinhVienView extends JFrame {
 		int maSinhVien = Integer.valueOf(model_table.getValueAt(i_row, 0) + "");
 		String hoVaTen = model_table.getValueAt(i_row, 1) + "";
 		QueQuan tinh = QueQuan.getTinhByTen(model_table.getValueAt(i_row, 2) + "");
-//		String s_ngaySinh = model_table.getValueAt(i_row, 3) + "";
-//		Date ngaySinh = new Date(s_ngaySinh);
 		
 		Date ngaySinh = null;
 		try {
@@ -553,6 +551,7 @@ public class SinhVienView extends JFrame {
 				oos.writeObject(sv);
 			}
 			oos.close();
+			fos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -575,13 +574,12 @@ public class SinhVienView extends JFrame {
 ////// CSV
 	public void fileCSV() {
 		try {
-			FileWriter writer = new FileWriter("test.csv");
+			FileWriter writer = new FileWriter("DanhSachSinhVien.csv");
 				for(SinhVien sinhVien : this.model.getDsSinhVien()) {
-				writer.write(sinhVien.toString()+ "\n");
+					writer.write(sinhVien.toString()+ "\n");
 			}
 			writer.close();	
 		}catch (IOException e) {
-			System.out.println("An error occured.");
 			e.printStackTrace();
 		}
 	}
@@ -597,6 +595,7 @@ public class SinhVienView extends JFrame {
 				ds.add(sv);
 			}
 			ois.close();
+			fis.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -629,7 +628,8 @@ public class SinhVienView extends JFrame {
 			model_table.removeRow(i_row);
 		}
 	}
-
+	
+	public int maCu;
 	public SinhVienModel model;
 	private JPanel contentPane;
 	private JComboBox comboBox_queQuan_timKiem;

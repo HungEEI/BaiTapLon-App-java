@@ -108,18 +108,21 @@ public class AdminView extends JFrame {
 		menuBar_1.add(jMenu_2);
 		
 		jMenuItem_nguoiHoc = new JMenuItem("Người học");
+		jMenuItem_nguoiHoc.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\10206-man-student-icon.png"));
 		jMenuItem_nguoiHoc.addActionListener(actionListener);
 		jMenuItem_nguoiHoc.setForeground(Color.BLUE);
 		jMenu_2.add(jMenuItem_nguoiHoc);
 		jMenu_2.addSeparator();
 				
 		jMenuItem_khoaHoc = new JMenuItem("Khóa học");
+		jMenuItem_khoaHoc.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Courses.png"));
 		jMenuItem_khoaHoc.addActionListener(actionListener);
 		jMenuItem_khoaHoc.setForeground(Color.BLUE);
 		jMenu_2.add(jMenuItem_khoaHoc);
 		jMenu_2.addSeparator();
 		
 		jMenuItem_giangVien = new JMenuItem("Quản lý giảng viên");
+		jMenuItem_giangVien.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\10218-man-teacher-icon.png"));
 		jMenuItem_giangVien.addActionListener(actionListener);
 		jMenuItem_giangVien.setForeground(Color.BLUE);
 		jMenu_2.add(jMenuItem_giangVien);

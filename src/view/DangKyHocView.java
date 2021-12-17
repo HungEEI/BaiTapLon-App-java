@@ -1,43 +1,48 @@
 package view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import controller.KetQuaController;
-import model.SinhVien;
-import model.SinhVienModel;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JTabbedPane;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
-public class DangKyKhocHoc extends JFrame {
+import controller.DangKyController;
+import model.KhoaHoc;
+import model.KhoaHocModel;
+import javax.swing.JTextArea;
+
+public class DangKyHocView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	private JTable table_kq;	
-	public SinhVienModel model;
-	private JButton jButton_open;
+	public KhoaHocModel model;
+
 	private JButton jButton_dong;
-	
-	public DangKyKhocHoc() {
-		
-		this.model = new SinhVienModel();
+
+	private JTable table_kh;
+
+	private JButton jButton_open;
+	private JTable table;
+
+	public DangKyHocView() {
+		this.model = new KhoaHocModel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(745, 500);
 		this.setLocationRelativeTo(null);
@@ -47,7 +52,7 @@ public class DangKyKhocHoc extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ActionListener abc = new KetQuaController(this);
+		ActionListener abc = new DangKyController(this);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 49, 709, 403);
@@ -63,40 +68,53 @@ public class DangKyKhocHoc extends JFrame {
 		
 		JPanel panel_ketQuaHoc = new JPanel();
 		panel_ketQuaHoc.setBackground(new Color(255, 225, 181));
-		tabbedPane.addTab("Kết quả học tập", null, panel_ketQuaHoc, null);
+		tabbedPane.addTab("ĐĂNG KÝ MÔN", null, panel_ketQuaHoc, null);
 		panel_ketQuaHoc.setLayout(null);
 		
-		table_kq = new JTable();
-		table_kq.setFont(new Font("Tahoma", Font.BOLD, 12));
-		table_kq.setModel(new DefaultTableModel(
+		table_kh = new JTable();
+		table_kh.setFont(new Font("Tahoma", Font.BOLD, 12));
+		table_kh.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				" MÃ SINH VIÊN", "   HỌ VÀ TÊN", "   MÔN HỌC",
-				"  CHUYÊN CẦN", "     GIỮA KỲ", "     CUỐI KỲ", "        HỆ 10", "       HẠNG"
+				" MÃ HỌC PHẦN", "   TÊN MÔN HỌC", "   SỐ TÍN","  HỌC PHÍ",
 			}
 		));
-		table_kq.setRowHeight(25);
+		table_kh.setRowHeight(25);
 	
-		JScrollPane scrollPane = new JScrollPane(table_kq);
-		scrollPane.setBounds(10, 39, 684, 327);
+		JScrollPane scrollPane = new JScrollPane(table_kh);
+		scrollPane.setBounds(10, 39, 684, 154);
 		panel_ketQuaHoc.add(scrollPane);
 		
-		jButton_open = new JButton("Mở File Điểm");
+		jButton_open = new JButton("Mở File Khóa Học");
 		jButton_open.addActionListener(abc);
 		jButton_open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jButton_open.setForeground(Color.BLUE);
-		jButton_open.setBounds(10, 0, 118, 35);
+		jButton_open.setBounds(10, 0, 135, 35);
 		panel_ketQuaHoc.add(jButton_open);
 		
-		JButton jButton_dk = new JButton("Đăng Ký học");
-		jButton_dk.setFont(new Font("Tahoma", Font.BOLD, 10));
-		jButton_dk.addActionListener(abc);
-		jButton_dk.setForeground(Color.BLACK);
-		jButton_dk.setBounds(162, 10, 97, 22);
-		panel_ketQuaHoc.add(jButton_dk);
+		JButton btnNewButton = new JButton("Đăng ký");
+		btnNewButton.setForeground(Color.BLUE);
+		btnNewButton.setBackground(new Color(102, 205, 170));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(43, 229, 85, 35);
+		panel_ketQuaHoc.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Điểm");
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"", "", "", ""
+			}
+		));
+		table.setRowHeight(25);
+		
+		JScrollPane scrollPane_1 = new JScrollPane(table);
+		scrollPane_1.setBounds(190, 239, 504, 127);
+		panel_ketQuaHoc.add(scrollPane_1);
+		
+		JLabel lblNewLabel = new JLabel("Đăng Ký Môn Học");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,17 +124,15 @@ public class DangKyKhocHoc extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void themDiemVaoTable_KQ(SinhVien sv) {
-		DefaultTableModel model_table = (DefaultTableModel) table_kq.getModel();
-		model_table.addRow(new Object[] {sv.getMaSinhVien() + "", sv.getHoVaTen(), 
-										 sv.getMonHoc(), sv.getChuyenCan() + "", 
-										 sv.getGiuaKy() + "", sv.getCuoiKy() + "",
-										 sv.getHe4(), sv.getHang()});
+	public void themDiemVaoTable_KH(KhoaHoc kh) {
+		DefaultTableModel model_table = (DefaultTableModel) table_kh.getModel();
+		model_table.addRow(new Object[] {kh.getMaHocPhan(), kh.getMonHoc(),
+										kh.getSoTin()+ "", kh.getHocPhi()+ ""});
 	}
 	
-	public void thucHienTaiLaiDuLieu_KQ() {
+	public void thucHienTaiLaiDuLieu_KH() {
 		while (true) {
-			DefaultTableModel model_table = (DefaultTableModel) table_kq.getModel();
+			DefaultTableModel model_table = (DefaultTableModel) table_kh.getModel();
 			int soLuongDong = model_table.getRowCount();
 			if(soLuongDong==0)
 				break;
@@ -127,26 +143,26 @@ public class DangKyKhocHoc extends JFrame {
 					e.printStackTrace();
 				}
 		}
-		for (SinhVien sv : this.model.getDsSinhVien()) {
-			this.themDiemVaoTable_KQ(sv);
+		for (KhoaHoc kh : this.model.getDsKhoaHoc()) {
+			this.themDiemVaoTable_KH(kh);
 		}
 	}
 	
 	public void openFile(File file) {
-		ArrayList<SinhVien> ds = new ArrayList<SinhVien>();
+		ArrayList<KhoaHoc> ds = new ArrayList<KhoaHoc>();
 		try {
 			this.model.setTenFile(file.getAbsolutePath());
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			SinhVien sv = null;
-			while((sv = (SinhVien) ois.readObject())!=null) {
-				ds.add(sv);
+			KhoaHoc kh = null;
+			while((kh = (KhoaHoc) ois.readObject())!=null) {
+				ds.add(kh);
 			}
 			ois.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		this.model.setDsSinhVien(ds);
+		this.model.setDsKhoaHoc(ds);
 	}
 	
 	public void thucHienOpenFile() {
@@ -155,10 +171,10 @@ public class DangKyKhocHoc extends JFrame {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File file = fc.getSelectedFile();
 			openFile(file);
-			thucHienTaiLaiDuLieu_KQ();
+			thucHienTaiLaiDuLieu_KH();
 		} 
 	}
-	
+		
 	public void thoatKhoiChuongTrinh() {
 		int luaChon = JOptionPane.showConfirmDialog(
 			    this,
@@ -169,5 +185,5 @@ public class DangKyKhocHoc extends JFrame {
 			this.dispose();
 			new PhanCapView();
 		}
-	}
+	}	
 }

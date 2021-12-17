@@ -12,12 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class PhanCapView extends JFrame {
 
 	private JPanel contentPane;
 
 	public PhanCapView() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Actions-system-search-icon.png"));
 		
 		this.setSize(469, 300);
 		this.setTitle("CHỌN VỊ TRÍ");

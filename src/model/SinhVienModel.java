@@ -77,6 +77,5 @@ public class SinhVienModel {
 		if(8.5 <= he4 && he4 < 9) hang = "A";
 		if(9 <= he4 && he4 <= 10) hang = "A+";
 		return hang;
-	}
-	
+	}	
 }

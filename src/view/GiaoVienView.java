@@ -37,6 +37,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 public class GiaoVienView extends JFrame {
 
@@ -85,11 +88,13 @@ public class GiaoVienView extends JFrame {
 		panel_giangVien.add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("File");
-		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		mnNewMenu.setForeground(Color.BLUE);
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem jMenuItem_open = new JMenuItem("Open");
+		jMenuItem_open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		jMenuItem_open.setForeground(Color.BLUE);
 		jMenuItem_open.addActionListener(actionListener);
 		mnNewMenu.add(jMenuItem_open);
 		
@@ -113,7 +118,7 @@ public class GiaoVienView extends JFrame {
 		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
 		jButton_them.addActionListener(actionListener);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_them.setBounds(418, 455, 105, 35);
+		jButton_them.setBounds(390, 455, 105, 35);
 		panel_giangVien.add(jButton_them);
 		
 		jButton_xoa = new JButton("Xóa");
@@ -122,7 +127,7 @@ public class GiaoVienView extends JFrame {
 		jButton_xoa.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\exit.png"));
 		jButton_xoa.addActionListener(actionListener);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_xoa.setBounds(131, 455, 105, 35);
+		jButton_xoa.setBounds(66, 455, 105, 35);
 		panel_giangVien.add(jButton_xoa);
 		
 		jButton_capNhat = new JButton("Cập nhật");
@@ -131,7 +136,7 @@ public class GiaoVienView extends JFrame {
 		jButton_capNhat.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\update.png"));
 		jButton_capNhat.addActionListener(actionListener);
 		jButton_capNhat.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_capNhat.setBounds(276, 455, 105, 35);
+		jButton_capNhat.setBounds(226, 455, 105, 35);
 		panel_giangVien.add(jButton_capNhat);
 		
 		jButton_huyBo = new JButton("Hủy bỏ");

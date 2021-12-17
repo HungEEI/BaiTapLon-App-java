@@ -34,7 +34,7 @@ public class KhoaHocView extends JFrame {
 	
 	public void init() {
 		this.model_kh = new KhoaHocModel();
-		this.setSize(593, 556);
+		this.setSize(1148, 452);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -50,96 +50,135 @@ public class KhoaHocView extends JFrame {
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(228, -3, 138, 41);
+		lblNewLabel.setBounds(539, 0, 138, 41);
 		contentPane.add(lblNewLabel);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 48, 563, 2);
+		separator.setBounds(10, 48, 1124, 2);
 		contentPane.add(separator);
 		
-		textField_maHocPhan = new JTextField();
-		textField_maHocPhan.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField_maHocPhan.setBounds(138, 313, 286, 25);
-		contentPane.add(textField_maHocPhan);
-		textField_maHocPhan.setColumns(10);
-		
-		textField_hocPhi = new JTextField();
-		textField_hocPhi.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField_hocPhi.setBounds(138, 438, 286, 25);
-		contentPane.add(textField_hocPhi);
-		textField_hocPhi.setColumns(10);
-		
-		textField_soTin = new JTextField();
-		textField_soTin.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField_soTin.setBounds(138, 399, 287, 25);
-		contentPane.add(textField_soTin);
-		textField_soTin.setColumns(10);
-		
 		jButton_them = new JButton("Thêm");
+		jButton_them.setBackground(Color.GREEN);
 		jButton_them.addActionListener(ac);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_them.setBounds(460, 313, 85, 30);
+		jButton_them.setBounds(444, 121, 85, 30);
 		contentPane.add(jButton_them);
 		
 		jButton_sua = new JButton("Sửa");
 		jButton_sua.addActionListener(ac);
 		jButton_sua.setFont(new Font("Tahoma", Font.BOLD, 11));
-		jButton_sua.setBounds(460, 357, 85, 30);
+		jButton_sua.setBounds(444, 161, 85, 30);
 		contentPane.add(jButton_sua);
 		
 		jButton_xoa = new JButton("Xóa");
+		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.addActionListener(ac);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_xoa.setBounds(460, 398, 85, 30);
+		jButton_xoa.setBounds(444, 201, 85, 30);
 		contentPane.add(jButton_xoa);
 		
 		jButton_huy = new JButton("Mới");
 		jButton_huy.addActionListener(ac);
 		jButton_huy.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_huy.setBounds(460, 437, 85, 30);
+		jButton_huy.setBounds(444, 71, 85, 30);
 		contentPane.add(jButton_huy);
 		
 		jButton_frist = new JButton("l<");
+		jButton_frist.setBackground(new Color(0, 0, 204));
 		jButton_frist.addActionListener(ac);
-		jButton_frist.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_frist.setBounds(138, 487, 47, 20);
+		jButton_frist.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jButton_frist.setBounds(96, 319, 47, 30);
 		contentPane.add(jButton_frist);
 		
 		jButton_prev = new JButton("<<");
+		jButton_prev.setBackground(new Color(51, 102, 255));
+		jButton_prev.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		jButton_prev.addActionListener(ac);
-		jButton_prev.setBounds(216, 488, 47, 20);
+		jButton_prev.setBounds(156, 320, 47, 30);
 		contentPane.add(jButton_prev);
 		
 		jButton_next = new JButton(">>");
+		jButton_next.setBackground(new Color(51, 102, 255));
 		jButton_next.addActionListener(ac);
-		jButton_next.setBounds(304, 488, 47, 20);
+		jButton_next.setBounds(228, 320, 47, 30);
 		contentPane.add(jButton_next);
 		
 		jButton_last = new JButton(">l");
+		jButton_last.setBackground(new Color(0, 0, 204));
 		jButton_last.addActionListener(ac);
-		jButton_last.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_last.setBounds(377, 487, 47, 20);
+		jButton_last.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jButton_last.setBounds(287, 319, 47, 30);
 		contentPane.add(jButton_last);
 		
-		lblNewLabel_1 = new JLabel("Môn học");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_1.setBounds(27, 357, 92, 24);
-		contentPane.add(lblNewLabel_1);
+		jButton_dong = new JButton("Đóng");
+		jButton_dong.setBackground(Color.CYAN);
+		jButton_dong.setForeground(Color.RED);
+		jButton_dong.addActionListener(ac);
+		jButton_dong.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jButton_dong.setBounds(10, 8, 85, 31);
+		contentPane.add(jButton_dong);
+		
+		jButton_luu = new JButton("Lưu");
+		jButton_luu.addActionListener(ac);
+		jButton_luu.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jButton_luu.setBounds(444, 241, 85, 30);
+		contentPane.add(jButton_luu);
+		
+		panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 153));
+		panel.setBounds(10, 71, 416, 232);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
 		lblNewLabel_2 = new JLabel("Mã học phần");
+		lblNewLabel_2.setBounds(10, 10, 92, 26);
+		panel.add(lblNewLabel_2);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(27, 315, 92, 26);
-		contentPane.add(lblNewLabel_2);
+		
+		lblNewLabel_1 = new JLabel("Môn học");
+		lblNewLabel_1.setBounds(10, 73, 92, 24);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		lblNewLabel_3 = new JLabel("Số tín");
+		lblNewLabel_3.setBounds(10, 132, 66, 26);
+		panel.add(lblNewLabel_3);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(27, 400, 66, 26);
-		contentPane.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Học phí");
+		lblNewLabel_4.setBounds(10, 186, 66, 24);
+		panel.add(lblNewLabel_4);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(27, 440, 66, 24);
-		contentPane.add(lblNewLabel_4);
+		
+		textField_maHocPhan = new JTextField();
+		textField_maHocPhan.setBounds(113, 11, 286, 25);
+		panel.add(textField_maHocPhan);
+		textField_maHocPhan.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_maHocPhan.setColumns(10);
+		
+		textField_monHoc = new JTextField();
+		textField_monHoc.setBounds(112, 73, 286, 25);
+		panel.add(textField_monHoc);
+		textField_monHoc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_monHoc.setColumns(10);
+		
+		textField_soTin = new JTextField();
+		textField_soTin.setBounds(113, 133, 287, 25);
+		panel.add(textField_soTin);
+		textField_soTin.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_soTin.setColumns(10);
+		
+		textField_hocPhi = new JTextField();
+		textField_hocPhi.setBounds(113, 186, 286, 25);
+		panel.add(textField_hocPhi);
+		textField_hocPhi.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_hocPhi.setColumns(10);
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(102, 204, 153));
+		panel_1.setBounds(539, 71, 580, 328);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
 		
 		table_khoaHoc = new JTable();
 		table_khoaHoc.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -168,32 +207,8 @@ public class KhoaHocView extends JFrame {
 		table_khoaHoc.setRowHeight(25);
 		
 		JScrollPane scrollPane = new JScrollPane(table_khoaHoc);
-		scrollPane.setBounds(10, 60, 563, 231);
-		contentPane.add(scrollPane);
-		
-		textField_monHoc = new JTextField();
-		textField_monHoc.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField_monHoc.setBounds(138, 354, 286, 25);
-		contentPane.add(textField_monHoc);
-		textField_monHoc.setColumns(10);
-		
-		jButton_dong = new JButton("Đóng");
-		jButton_dong.setBackground(Color.CYAN);
-		jButton_dong.setForeground(Color.RED);
-		jButton_dong.addActionListener(ac);
-		jButton_dong.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_dong.setBounds(10, 8, 85, 31);
-		contentPane.add(jButton_dong);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(10, 301, 563, 2);
-		contentPane.add(separator_1);
-		
-		jButton_luu = new JButton("Lưu");
-		jButton_luu.addActionListener(ac);
-		jButton_luu.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_luu.setBounds(460, 478, 85, 30);
-		contentPane.add(jButton_luu);
+		scrollPane.setBounds(17, 10, 553, 308);
+		panel_1.add(scrollPane);
 		
 		this.setVisible(true);
 	}
@@ -281,8 +296,7 @@ public class KhoaHocView extends JFrame {
 			FileOutputStream fos = new FileOutputStream(path);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			for (KhoaHoc kh : this.model_kh.getDsKhoaHoc()) {
-				oos.writeObject(kh);
-				
+				oos.writeObject(kh);				
 			}
 			oos.close();
 		} catch (Exception e) {
@@ -394,4 +408,6 @@ public class KhoaHocView extends JFrame {
 	private JButton jButton_last;
 	private JButton jButton_dong;
 	private JButton jButton_luu;
+	private JPanel panel;
+	private JPanel panel_1;
 }

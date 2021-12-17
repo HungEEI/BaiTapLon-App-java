@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -31,7 +32,9 @@ public class LogInGiaoVienView extends JFrame {
 	public LogInGiaoVienView() {
 		this.userDAO = new UserDAO();
 		this.setSize(450, 300);
+		this.setTitle("LOG IN");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Home.png"));
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.CYAN);

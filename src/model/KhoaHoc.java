@@ -1,8 +1,10 @@
 package model;
 
-import java.util.Objects;
+import java.io.Serializable;
 
-public class KhoaHoc{
+public class KhoaHoc implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String maHocPhan;
 	private String monHoc;
@@ -50,30 +52,4 @@ public class KhoaHoc{
 	public void setHocPhi(float hocPhi) {
 		this.hocPhi = hocPhi;
 	}
-
-	@Override
-	public String toString() {
-		return "maHocPhan: " + maHocPhan + ", monHoc: " + monHoc + ","
-				+ " soTin: " + soTin + ", hocPhi: " + hocPhi;
-		}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(hocPhi, maHocPhan, monHoc, soTin);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		KhoaHoc other = (KhoaHoc) obj;
-		return Float.floatToIntBits(hocPhi) == Float.floatToIntBits(other.hocPhi)
-				&& Objects.equals(maHocPhan, other.maHocPhan) && Objects.equals(monHoc, other.monHoc)
-				&& soTin == other.soTin;
-	}
-						
 }
