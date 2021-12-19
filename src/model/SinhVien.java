@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SinhVien implements Serializable{
@@ -19,8 +18,6 @@ public class SinhVien implements Serializable{
 	
 	public SinhVien() {
 	}
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public SinhVien(int maSinhVien, String hoVaTen, QueQuan queQuan, Date ngaySinh, 
 					boolean gioiTinh, float chuyenCan, float giuaKy, float cuoiKy, float he4, String hang) {

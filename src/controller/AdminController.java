@@ -7,6 +7,7 @@ import view.AdminView;
 import view.ChangePassView;
 import view.GiaoVienView;
 import view.KhoaHocView;
+import view.LopHocView;
 import view.SinhVienView;
 
 public class AdminController implements ActionListener{
@@ -40,7 +41,10 @@ public class AdminController implements ActionListener{
 		}else if(st.equals("Quản lý giảng viên")) {
 			new GiaoVienView();
 			
-		}		
+		}else if(st.equals("Lớp Học")) {
+			new LopHocView();
+			
+		}			
 		
 	}
 

@@ -36,7 +36,7 @@ public class KhoaHocView extends JFrame {
 		this.model_kh = new KhoaHocModel();
 		this.setSize(1148, 452);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 228, 181));
@@ -61,20 +61,20 @@ public class KhoaHocView extends JFrame {
 		jButton_them.setBackground(Color.GREEN);
 		jButton_them.addActionListener(ac);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_them.setBounds(444, 121, 85, 30);
+		jButton_them.setBounds(444, 111, 85, 30);
 		contentPane.add(jButton_them);
 		
 		jButton_sua = new JButton("Sửa");
 		jButton_sua.addActionListener(ac);
 		jButton_sua.setFont(new Font("Tahoma", Font.BOLD, 11));
-		jButton_sua.setBounds(444, 161, 85, 30);
+		jButton_sua.setBounds(444, 151, 85, 30);
 		contentPane.add(jButton_sua);
 		
 		jButton_xoa = new JButton("Xóa");
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.addActionListener(ac);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_xoa.setBounds(444, 201, 85, 30);
+		jButton_xoa.setBounds(444, 191, 85, 30);
 		contentPane.add(jButton_xoa);
 		
 		jButton_huy = new JButton("Mới");
@@ -121,7 +121,7 @@ public class KhoaHocView extends JFrame {
 		jButton_luu = new JButton("Lưu");
 		jButton_luu.addActionListener(ac);
 		jButton_luu.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_luu.setBounds(444, 241, 85, 30);
+		jButton_luu.setBounds(444, 231, 85, 30);
 		contentPane.add(jButton_luu);
 		
 		panel = new JPanel();
@@ -184,31 +184,37 @@ public class KhoaHocView extends JFrame {
 		table_khoaHoc.setFont(new Font("Tahoma", Font.BOLD, 12));
 		table_khoaHoc.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"PHY1112", "Tiếng anh B1", 5, 2500000},
-				{"PHY1109", "Xác suất thống kê", 2, 600000},
-				{"PHY1023", "Điện và từ", 4, 1750000},
-				{"PHY2308", "THVL đại cương 1", 2, 900000},
-				{"PHY1107", "Giải tích 1", 2, 1550000},
-				{"PHY1106", "Giải tích 2", 2, 1550000},
-				{"PHY1004", "Cơ học", 2, 1500000},
-				{"PHY1204", "Nhiệt động học", 3, 200000},
-				{"PHY1109", "Đại số tuyến tính", 2, 1550000},
-				{"PHI1002", "CNXH và Khoa học", 2, 1400000},
-				{"PHY2504", "Phương pháp số", 2, 750000},
-				{"PHY1113", "Lập trình C", 2, 950000},
-				{"PHY2011", "Lt hướng đối tượng", 2, 1000000},
-				{"PHY1104", "THVL đại cương 2", 2, 900000},
-				{"PHY1202", "Triết học", 2, 755000},
+//				{"PHY1112", "Tiếng anh B1", 5, 2500000},
+//				{"PHY1109", "Xác suất thống kê", 2, 600000},
+//				{"PHY1023", "Điện và từ", 4, 1750000},
+//				{"PHY2308", "THVL đại cương 1", 2, 900000},
+//				{"PHY1107", "Giải tích 1", 2, 1550000},
+//				{"PHY1106", "Giải tích 2", 2, 1550000},
+//				{"PHY1004", "Cơ học", 2, 1500000},
+//				{"PHY1204", "Nhiệt động học", 3, 200000},
+//				{"PHY1109", "Đại số tuyến tính", 2, 1550000},
+//				{"PHI1002", "CNXH và Khoa học", 2, 1400000},
+//				{"PHY2504", "Phương pháp số", 2, 750000},
+//				{"PHY1113", "Lập trình C", 2, 950000},
+//				{"PHY2011", "Lt hướng đối tượng", 2, 1000000},
+//				{"PHY1104", "THVL đại cương 2", 2, 900000},
+//				{"PHY1202", "Triết học", 2, 755000},
 			},
 			new String[] {
-				"Mã học phần", "Tên môn học", "Số tín", "Học phí"
+				"MÃ HỌC PHẦN", "TÊN MÔN HỌC", "SỐ TÍN", "HỌC PHÍ"
 			}
 		));
 		table_khoaHoc.setRowHeight(25);
 		
 		JScrollPane scrollPane = new JScrollPane(table_khoaHoc);
-		scrollPane.setBounds(17, 10, 553, 308);
+		scrollPane.setBounds(10, 10, 560, 308);
 		panel_1.add(scrollPane);
+		
+		btnNewButton = new JButton("File");
+		btnNewButton.setBackground(new Color(102, 204, 255));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(444, 271, 85, 30);
+		contentPane.add(btnNewButton);
 		
 		this.setVisible(true);
 	}
@@ -410,4 +416,5 @@ public class KhoaHocView extends JFrame {
 	private JButton jButton_luu;
 	private JPanel panel;
 	private JPanel panel_1;
+	private JButton btnNewButton;
 }

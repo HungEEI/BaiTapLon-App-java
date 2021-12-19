@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
+import java.awt.SystemColor;
 
 public class PhanCapView extends JFrame {
 
@@ -38,6 +39,7 @@ public class PhanCapView extends JFrame {
 		panel.setLayout(null);
 		
 		JButton jButton_admin = new JButton("ADMINS");
+		jButton_admin.setBackground(SystemColor.info);
 		jButton_admin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -61,6 +63,7 @@ public class PhanCapView extends JFrame {
 		panel_1.setLayout(null);
 		
 		JButton jButton_giaoVien = new JButton("GIÁO VIÊN");
+		jButton_giaoVien.setBackground(SystemColor.info);
 		jButton_giaoVien.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -84,6 +87,7 @@ public class PhanCapView extends JFrame {
 		panel_2.setLayout(null);
 		
 		JButton jButton_sinhVien = new JButton("SINH VIÊN");
+		jButton_sinhVien.setBackground(SystemColor.info);
 		jButton_sinhVien.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

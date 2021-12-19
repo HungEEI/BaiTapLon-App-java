@@ -1,7 +1,12 @@
 package model;
 
-public class LopHoc {
+import java.io.Serializable;
+import java.util.ArrayList;
 
+public class LopHoc implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private String tenPhong;
 	private int soLuong;
@@ -15,6 +20,10 @@ public class LopHoc {
 		this.tenPhong = tenPhong;
 		this.soLuong = soLuong;
 		this.trangThai = trangThai;
+	}
+
+	public LopHoc(int i, String tenPhong) {
+		this.tenPhong = tenPhong;
 	}
 
 	public int getId() {
@@ -48,5 +57,46 @@ public class LopHoc {
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
+	
+	public static ArrayList<LopHoc> getDSLopHoc(){
 		
+		String[] arr_lopHoc = {"101 - T1", "102 - T1", "103 - T1", 
+								"201 - T2", "202 - T2", "203 - T2", 
+								"301 - T3", "302 - T3", "303 - T3", 
+								"401 - T4", "402 - T4", "404 - T4",};
+		
+		ArrayList<LopHoc> listLopHoc = new ArrayList<LopHoc>();
+		int i = 0;
+		for (String tenlop : arr_lopHoc) {
+			LopHoc l = new LopHoc(i, tenlop);
+			listLopHoc.add(l);
+		}
+		return listLopHoc;
+	}	
+	
+	public static LopHoc getLopById(int lopHoc) {
+		return LopHoc.getDSLopHoc().get(lopHoc);
+	}
+
+	public static LopHoc getLopByTen(String tenLop) {
+		ArrayList<LopHoc> listLop = LopHoc.getDSLopHoc();
+		for (LopHoc lop : listLop) {
+			if(lop.tenPhong.equals(tenLop))
+				return lop;
+		}
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

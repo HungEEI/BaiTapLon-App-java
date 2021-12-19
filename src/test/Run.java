@@ -13,6 +13,7 @@ public class Run {
 			new HelloView();
 			} catch (Exception ex) {
 				ex.printStackTrace();
-			}			
+			}
 	}
+	
 }

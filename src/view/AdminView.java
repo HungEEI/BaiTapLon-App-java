@@ -23,6 +23,7 @@ import model.SinhVienModel;
 
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JToolBar;
 
 public class AdminView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -121,16 +122,23 @@ public class AdminView extends JFrame {
 		jMenu_2.add(jMenuItem_khoaHoc);
 		jMenu_2.addSeparator();
 		
+		jMenuItem_lopHoc = new JMenuItem("Lớp Học");
+		jMenuItem_lopHoc.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\training.png"));
+		jMenuItem_lopHoc.addActionListener(actionListener);
+		jMenuItem_lopHoc.setForeground(Color.BLUE);
+		jMenu_2.add(jMenuItem_lopHoc);
+		jMenu_2.addSeparator();
+		
 		jMenuItem_giangVien = new JMenuItem("Quản lý giảng viên");
 		jMenuItem_giangVien.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\10218-man-teacher-icon.png"));
-		jMenuItem_giangVien.addActionListener(actionListener);
+		jMenuItem_giangVien.addActionListener(actionListener);		
 		jMenuItem_giangVien.setForeground(Color.BLUE);
 		jMenu_2.add(jMenuItem_giangVien);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBackground(Color.WHITE);
 		lblNewLabel_2.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\logoVNU.png"));
-		lblNewLabel_2.setBounds(0, 32, 841, 468);
+		lblNewLabel_2.setBounds(0, 33, 841, 467);
 		panel_admins.add(lblNewLabel_2);
 		
 		tabbedPane.setFont(font);
@@ -230,4 +238,5 @@ public class AdminView extends JFrame {
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
 	private JTabbedPane tabbedPane;
+	private JMenuItem jMenuItem_lopHoc;
 }
