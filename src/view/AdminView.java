@@ -81,11 +81,12 @@ public class AdminView extends JFrame {
 		panel_admins.setLayout(null);
 		
 		menuBar_1 = new JMenuBar();
-		menuBar_1.setBackground(Color.WHITE);
-		menuBar_1.setBounds(0, 0, 841, 35);
+		menuBar_1.setBackground(Color.CYAN);
+		menuBar_1.setBounds(0, 0, 841, 49);
 		panel_admins.add(menuBar_1);
 		
 		jMenu_1 = new JMenu("Hệ thống");
+		jMenu_1.setBackground(Color.CYAN);
 		jMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		jMenu_1.setForeground(Color.RED);
 		menuBar_1.add(jMenu_1);
@@ -104,6 +105,7 @@ public class AdminView extends JFrame {
 		jMenu_1.add(jMenuItem_doiMatKhau);
 		
 		jMenu_2 = new JMenu("Quản lý");
+		jMenu_2.setBackground(Color.CYAN);
 		jMenu_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		jMenu_2.setForeground(Color.RED);
 		menuBar_1.add(jMenu_2);
@@ -138,7 +140,7 @@ public class AdminView extends JFrame {
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBackground(Color.WHITE);
 		lblNewLabel_2.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\logoVNU.png"));
-		lblNewLabel_2.setBounds(0, 33, 841, 467);
+		lblNewLabel_2.setBounds(0, 50, 841, 450);
 		panel_admins.add(lblNewLabel_2);
 		
 		tabbedPane.setFont(font);

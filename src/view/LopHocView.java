@@ -106,7 +106,7 @@ public class LopHocView extends JFrame {
 		ArrayList<LopHoc> listLopHoc = LopHoc.getDSLopHoc();
 		comboBox.addItem("");
 		for (LopHoc lop : listLopHoc) {
-			comboBox.addItem(lop.getTenPhong());
+			comboBox.addItem(lop.getTen());
 		}
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		comboBox.setBounds(140, 94, 152, 22);
@@ -225,7 +225,7 @@ public class LopHocView extends JFrame {
 	
 	public void themMonHocVaoTable(LopHoc lh) {
 		DefaultTableModel model_table = (DefaultTableModel) table.getModel();
-		model_table.addRow(new Object[] {lh.getId() + "", lh.getTenPhong() + "",
+		model_table.addRow(new Object[] {lh.getId() + "", lh.getTenPhong().getTen() + "",
 										lh.getSoLuong()+ "", (lh.isTrangThai() ? "Tốt" : "Bận")+ ""});
 	}
 	
@@ -241,16 +241,16 @@ public class LopHocView extends JFrame {
 				String ID = md_tb.getValueAt(i, 0) + "";
 				if (ID.equals(lh.getId() + "")) {
 					md_tb.setValueAt(lh.getId(), i, 0);
-					md_tb.setValueAt(lh.getTenPhong(), i, 1);
-					md_tb.setValueAt((lh.isTrangThai() ? "Tốt" : "Bận") + "", i, 2);
-					md_tb.setValueAt(lh.getSoLuong() + "", i, 3);					
+					md_tb.setValueAt(lh.getTenPhong().getTen() + "", i, 1 );
+					md_tb.setValueAt((lh.isTrangThai() ? "Tốt" : "Bận") + "", i, 3);
+					md_tb.setValueAt(lh.getSoLuong() + "", i, 2);					
 				}
 			}
 		}
 	}
 	
 	public void thucHienThemKhoaHoc() throws ParseException{
-		String id = this.textField_id.getText();
+		int id = Integer.valueOf(this.textField_id.getText());
 		int lopHoc = this.comboBox.getSelectedIndex() - 1;
 		LopHoc lop = LopHoc.getLopById(lopHoc);
 		int soLuong = Integer.valueOf(this.textField_soLuong.getText());
@@ -262,7 +262,7 @@ public class LopHocView extends JFrame {
 			trangThai = false;
 		}
 		
-		LopHoc lh = new LopHoc(lopHoc, id, soLuong, trangThai);
+		LopHoc lh = new LopHoc(id, lop, soLuong, trangThai);
 		this.themHoacCapNhatKhoaHoc(lh);
 	}
 	
@@ -276,14 +276,14 @@ public class LopHocView extends JFrame {
 		String textLop = md_tb.getValueAt(row, 3) + "";
 		boolean tenLop = textLop.equals("Tốt");
 		
-		LopHoc lh = new LopHoc(id, textLop, soLuong, tenLop);
+		LopHoc lh = new LopHoc(id, lop, soLuong, tenLop);
 		return lh;			
 	}
 	
 	public void hienThiThongTinKhoaHocDaChon() {
 		LopHoc lh = getKhoaHocDangChon();
 		this.textField_id.setText(lh.getId() + "");
-		this.comboBox.setSelectedItem(lh.getTenPhong());
+		this.comboBox.setSelectedItem(lh.getTenPhong().getTen());
 		this.textField_soLuong.setText(lh.getSoLuong() + "");
 		if (lh.isTrangThai()) {
 			rbn_tot.setSelected(true);			

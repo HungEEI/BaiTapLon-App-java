@@ -23,18 +23,21 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
+import java.awt.Toolkit;
 
 public class KhoaHocView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	public KhoaHocView() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
 		init();
 	}
 	
 	public void init() {
 		this.model_kh = new KhoaHocModel();
 		this.setSize(1148, 452);
+		this.setTitle("KHÓA HỌC");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);

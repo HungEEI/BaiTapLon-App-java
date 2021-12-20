@@ -40,18 +40,21 @@ import java.util.Date;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.Toolkit;
 
 public class GiaoVienView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	public GiaoVienView() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\10218-man-teacher-icon.png"));
 		init();
 	}
 	
 	public void init() {
 		this.model = new GiangVienModel();
 		this.setSize(880, 617);
+		this.setTitle("GIÁO VIÊN");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();

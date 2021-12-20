@@ -40,6 +40,9 @@ public class LopHocController implements ActionListener {
 			
 		}else if(s.equals("Lưu")) {
 			this.lopHocView.thucHienSaveFile();
+			
+		}else if(s.equals("Cập nhật")) {
+			this.lopHocView.hienThiThongTinKhoaHocDaChon();
 		}
 	}
 }

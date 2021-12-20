@@ -8,29 +8,31 @@ public class LopHoc implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private String tenPhong;
+	private LopHoc tenPhong;
 	private int soLuong;
 	private boolean trangThai;
+	
+	private String ten;
 	
 	public LopHoc() {
 	}
 
-	public LopHoc(int id, String tenPhong, int soLuong, boolean trangThai) {
+	public LopHoc(int id, LopHoc tenPhong, int soLuong, boolean trangThai) {
 		this.id = id;
 		this.tenPhong = tenPhong;
 		this.soLuong = soLuong;
 		this.trangThai = trangThai;
 	}
 
-	public LopHoc(int i, String tenPhong) {
-		this.tenPhong = tenPhong;
+	public LopHoc(int i, String ten) {
+		this.ten = ten;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getTenPhong() {
+	public LopHoc getTenPhong() {
 		return tenPhong;
 	}
 
@@ -46,7 +48,7 @@ public class LopHoc implements Serializable{
 		this.id = id;
 	}
 
-	public void setTenPhong(String tenPhong) {
+	public void setTenPhong(LopHoc tenPhong) {
 		this.tenPhong = tenPhong;
 	}
 
@@ -58,6 +60,14 @@ public class LopHoc implements Serializable{
 		this.trangThai = trangThai;
 	}
 	
+	public String getTen() {
+		return ten;
+	}
+
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+
 	public static ArrayList<LopHoc> getDSLopHoc(){
 		
 		String[] arr_lopHoc = {"101 - T1", "102 - T1", "103 - T1", 
@@ -81,22 +91,9 @@ public class LopHoc implements Serializable{
 	public static LopHoc getLopByTen(String tenLop) {
 		ArrayList<LopHoc> listLop = LopHoc.getDSLopHoc();
 		for (LopHoc lop : listLop) {
-			if(lop.tenPhong.equals(tenLop))
+			if(lop.ten.equals(tenLop))
 				return lop;
 		}
 		return null;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

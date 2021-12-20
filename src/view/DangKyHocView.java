@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -25,7 +24,6 @@ import javax.swing.table.DefaultTableModel;
 import controller.DangKyController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
-import javax.swing.JTextArea;
 
 public class DangKyHocView extends JFrame {
 
