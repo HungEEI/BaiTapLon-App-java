@@ -15,11 +15,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controller.LopHocController;
-import model.KhoaHoc;
 import model.LopHoc;
 import model.LopHocModel;
-import model.QueQuan;
-
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -36,27 +33,15 @@ import java.util.ArrayList;
 
 public class LopHocView extends JFrame {
 
-	private JPanel contentPane;
-	private JButton jButton_thoat;
-	private JTextField textField_id;
-	private JTextField textField_soLuong;
-	private JTable table;
-	private JButton jButton_save;
-	private JButton jButton_huyBo;
-	private JButton jButton_capNhat;
-	private JButton jButton_xoa;
-	private JButton jButton_them;
-	public LopHocModel model;
-	private JComboBox comboBox;
-	private JRadioButton rbn_tot;
-	private JRadioButton rbn_ban;
-	private ButtonGroup btn_trangThai;
+	private static final long serialVersionUID = 1L;
 
 	public LopHocView() {
+		
 		this.model = new LopHocModel();
 		this.setSize(880, 617);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -335,4 +320,20 @@ public class LopHocView extends JFrame {
 	public void hienThiSave() {
 		JOptionPane.showMessageDialog(this, "Lưu thành công");
 	}
+	
+	private JPanel contentPane;
+	private JButton jButton_thoat;
+	private JTextField textField_id;
+	private JTextField textField_soLuong;
+	private JTable table;
+	private JButton jButton_save;
+	private JButton jButton_huyBo;
+	private JButton jButton_capNhat;
+	private JButton jButton_xoa;
+	private JButton jButton_them;
+	public LopHocModel model;
+	private JComboBox comboBox;
+	private JRadioButton rbn_tot;
+	private JRadioButton rbn_ban;
+	private ButtonGroup btn_trangThai;
 }

@@ -82,12 +82,13 @@ public class AdminView extends JFrame {
 		
 		menuBar_1 = new JMenuBar();
 		menuBar_1.setBackground(Color.CYAN);
-		menuBar_1.setBounds(0, 0, 841, 49);
+		menuBar_1.setBounds(0, 0, 841, 59);
 		panel_admins.add(menuBar_1);
 		
 		jMenu_1 = new JMenu("Hệ thống");
+		jMenu_1.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Settings-icon.png"));
 		jMenu_1.setBackground(Color.CYAN);
-		jMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		jMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		jMenu_1.setForeground(Color.RED);
 		menuBar_1.add(jMenu_1);
 		
@@ -105,8 +106,9 @@ public class AdminView extends JFrame {
 		jMenu_1.add(jMenuItem_doiMatKhau);
 		
 		jMenu_2 = new JMenu("Quản lý");
+		jMenu_2.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Apps-addressbook-icon.png"));
 		jMenu_2.setBackground(Color.CYAN);
-		jMenu_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		jMenu_2.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		jMenu_2.setForeground(Color.RED);
 		menuBar_1.add(jMenu_2);
 		
@@ -140,7 +142,7 @@ public class AdminView extends JFrame {
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBackground(Color.WHITE);
 		lblNewLabel_2.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\logoVNU.png"));
-		lblNewLabel_2.setBounds(0, 50, 841, 450);
+		lblNewLabel_2.setBounds(0, 59, 841, 441);
 		panel_admins.add(lblNewLabel_2);
 		
 		tabbedPane.setFont(font);

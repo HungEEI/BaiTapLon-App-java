@@ -56,7 +56,8 @@ public class GiaoVienView extends JFrame {
 		this.setSize(880, 617);
 		this.setTitle("GIÁO VIÊN");
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SinhVien implements Serializable{
@@ -133,12 +134,14 @@ public class SinhVien implements Serializable{
 	public void setHang(String hang) {
 		this.hang = hang;
 	}
+	
+	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override
 	public String toString() {
 		return "Mã sinh Viên: " + maSinhVien + ", Họ và tên: " + hoVaTen + ", " + queQuan +
-				", Ngày Sinh: "+ ngaySinh + ", Giới tính: " + gioiTinh +
-				", Chuyên Cần: " + chuyenCan + ", Giữa kỳ" + giuaKy + ", Cuối kỳ: "
+				", Ngày Sinh: "+ format.format(ngaySinh) + (", Giới tính: " + gioiTinh != null ? ", Giới tính: nam" : ", Giới tính: nữ")
+				+ ", Chuyên Cần: " + chuyenCan + ", Giữa kỳ: " + giuaKy + ", Cuối kỳ: "
 				+ cuoiKy + ", Hệ 10: " + he4 + ", Hạng: " + hang;
 	}	
 }

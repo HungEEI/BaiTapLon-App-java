@@ -378,7 +378,7 @@ public class SinhVienView extends JFrame {
 			this.model.insert(sv);
 			this.themSinhVienVaoTable(sv);
 		} else {
-			this.model.update(sv);
+			this.model.update(sv);						
 			int soLuongDong = model_table.getRowCount();
 			for (int i = 0; i < soLuongDong; i++) {
 				String id = model_table.getValueAt(i, 0) + "";
@@ -629,7 +629,6 @@ public class SinhVienView extends JFrame {
 		}
 	}
 	
-	public int maCu;
 	public SinhVienModel model;
 	private JPanel contentPane;
 	private JComboBox comboBox_queQuan_timKiem;

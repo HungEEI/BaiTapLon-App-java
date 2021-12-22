@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.awt.Toolkit;
 
 public class DangKyKhocHoc extends JFrame {
 
@@ -36,6 +37,8 @@ public class DangKyKhocHoc extends JFrame {
 	private JButton jButton_dong;
 	
 	public DangKyKhocHoc() {
+		setTitle("ĐIỂM");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
 		
 		this.model = new SinhVienModel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

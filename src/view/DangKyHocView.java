@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import controller.DangKyController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
+import java.awt.Toolkit;
 
 public class DangKyHocView extends JFrame {
 
@@ -31,15 +32,14 @@ public class DangKyHocView extends JFrame {
 	
 	private JPanel contentPane;
 	public KhoaHocModel model;
-
 	private JButton jButton_dong;
-
 	private JTable table_kh;
-
 	private JButton jButton_open;
 	private JTable table;
 
 	public DangKyHocView() {
+		setTitle("ĐĂNG KÝ");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
 		this.model = new KhoaHocModel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(745, 500);
