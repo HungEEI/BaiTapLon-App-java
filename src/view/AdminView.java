@@ -23,7 +23,6 @@ import model.SinhVienModel;
 
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import javax.swing.JToolBar;
 
 public class AdminView extends JFrame {
 	private static final long serialVersionUID = 1L;

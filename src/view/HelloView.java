@@ -48,14 +48,15 @@ public class HelloView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		progressBar_chao = new JProgressBar();
-		progressBar_chao.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		progressBar_chao.setFont(new Font("Tahoma", Font.BOLD, 12));
 		progressBar_chao.setStringPainted(true);
 		progressBar_chao.setForeground(Color.BLUE);
 		progressBar_chao.setBounds(10, 230, 416, 23);
 		contentPane.add(progressBar_chao);	
 		
 		jLabel_status = new JLabel("   Khởi động ứng dụng...");
-		jLabel_status.setBounds(10, 208, 204, 23);
+		jLabel_status.setFont(new Font("Tahoma", Font.BOLD, 10));
+		jLabel_status.setBounds(10, 208, 218, 23);
 		contentPane.add(jLabel_status);
 		
 		this.setVisible(true);
