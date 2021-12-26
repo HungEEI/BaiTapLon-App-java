@@ -41,7 +41,11 @@ public class KhoaHocController implements ActionListener{
 			
 		}else if(s.equals("Lưu")) {
 			this.khoaHocView.thucHienSaveFile();
-			
+			this.khoaHocView.fileCSV();
+		
+		}else if(s.equals("File")) {
+			this.khoaHocView.thucHienOpenFile();
+							
 		}else if(s.equals("l<")) {
 			this.khoaHocView.first();
 		

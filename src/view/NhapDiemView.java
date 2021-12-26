@@ -26,12 +26,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controller.NhapDiemController;
+import model.KhoaHoc;
 import model.SinhVien;
 import model.SinhVienModel;
 
 public class NhapDiemView extends JFrame {
-
-	private static final long serialVersionUID = 1L;
 	
 	public NhapDiemView() {
 		init();
@@ -52,7 +51,7 @@ public class NhapDiemView extends JFrame {
 		ActionListener actionListener = new NhapDiemController(this);
 		
 		panel_nhapDiem = new JPanel();
-		panel_nhapDiem.setBounds(10, 65, 846, 512);
+		panel_nhapDiem.setBounds(10, 65, 846, 505);
 		panel_nhapDiem.setBackground(new Color(255, 228, 181));
 		contentPane.add(panel_nhapDiem);
 		panel_nhapDiem.setLayout(null);
@@ -72,10 +71,6 @@ public class NhapDiemView extends JFrame {
 		jButton_thoat.setBounds(10, 10, 103, 44);
 		contentPane.add(jButton_thoat);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 33, 841, 2);
-		panel_nhapDiem.add(separator_1);
-		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.BOLD, 12));
 		table.setModel(new DefaultTableModel(
@@ -89,150 +84,185 @@ public class NhapDiemView extends JFrame {
 		table.setRowHeight(25);
 	
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 45, 821, 243);
+		scrollPane.setBounds(10, 10, 821, 243);
 		panel_nhapDiem.add(scrollPane);
 		
 		jLabel_maSinhVien = new JLabel("Mã sinh viên");
 		jLabel_maSinhVien.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_maSinhVien.setBounds(32, 338, 92, 18);
+		jLabel_maSinhVien.setBounds(32, 275, 92, 18);
 		panel_nhapDiem.add(jLabel_maSinhVien);
 		
 		jLabel_hoVaTen = new JLabel("Họ và tên");
 		jLabel_hoVaTen.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_hoVaTen.setBounds(32, 367, 73, 18);
+		jLabel_hoVaTen.setBounds(32, 303, 73, 18);
 		panel_nhapDiem.add(jLabel_hoVaTen);
 		
 		jlabel_chuyenCan = new JLabel("Chuyên Cần");
 		jlabel_chuyenCan.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jlabel_chuyenCan.setBounds(362, 339, 73, 17);
+		jlabel_chuyenCan.setBounds(362, 276, 73, 17);
 		panel_nhapDiem.add(jlabel_chuyenCan);
 		
 		jLabel_giuaKy = new JLabel("Giữa kỳ");
 		jLabel_giuaKy.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_giuaKy.setBounds(362, 367, 66, 18);
+		jLabel_giuaKy.setBounds(372, 303, 66, 18);
 		panel_nhapDiem.add(jLabel_giuaKy);
 		
 		jLabel_CuoiKy = new JLabel("Cuối kỳ");
 		jLabel_CuoiKy.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_CuoiKy.setBounds(362, 394, 66, 18);
+		jLabel_CuoiKy.setBounds(362, 331, 66, 18);
 		panel_nhapDiem.add(jLabel_CuoiKy);
 		
 		JSeparator separator_1_1 = new JSeparator();
-		separator_1_1.setBounds(0, 298, 841, 2);
+		separator_1_1.setBounds(0, 263, 841, 2);
 		panel_nhapDiem.add(separator_1_1);
 		
 		textField_maSinhVien = new JTextField();
 		textField_maSinhVien.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_maSinhVien.setBounds(134, 334, 176, 22);
+		textField_maSinhVien.setBounds(134, 274, 176, 22);
 		panel_nhapDiem.add(textField_maSinhVien);
 		textField_maSinhVien.setColumns(10);
 		
 		textField_hoVaTen = new JTextField();
 		textField_hoVaTen.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_hoVaTen.setBounds(134, 363, 176, 22);
+		textField_hoVaTen.setBounds(134, 315, 176, 22);
 		panel_nhapDiem.add(textField_hoVaTen);
 		textField_hoVaTen.setColumns(10);
 		
 		textField_chuyenCan = new JTextField();
 		textField_chuyenCan.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_chuyenCan.setBounds(463, 339, 142, 22);
+		textField_chuyenCan.setBounds(463, 274, 142, 22);
 		panel_nhapDiem.add(textField_chuyenCan);
 		textField_chuyenCan.setColumns(10);
 		
 		textField_giuaKy = new JTextField();
 		textField_giuaKy.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_giuaKy.setBounds(463, 367, 142, 22);
+		textField_giuaKy.setBounds(463, 315, 142, 22);
 		panel_nhapDiem.add(textField_giuaKy);
 		textField_giuaKy.setColumns(10);
 		
 		textField_cuoiKy = new JTextField();
 		textField_cuoiKy.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_cuoiKy.setBounds(463, 395, 142, 22);
+		textField_cuoiKy.setBounds(463, 347, 142, 22);
 		panel_nhapDiem.add(textField_cuoiKy);
 		textField_cuoiKy.setColumns(10);
 		
 		jLabel_maSinhVien_1 = new JLabel("Môn học");
 		jLabel_maSinhVien_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_maSinhVien_1.setBounds(32, 395, 92, 18);
+		jLabel_maSinhVien_1.setBounds(32, 331, 92, 18);
 		panel_nhapDiem.add(jLabel_maSinhVien_1);
 		
 		textField_monHoc = new JTextField();
 		textField_monHoc.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textField_monHoc.setColumns(10);
-		textField_monHoc.setBounds(134, 393, 176, 22);
+		textField_monHoc.setBounds(134, 347, 176, 22);
 		panel_nhapDiem.add(textField_monHoc);
 		
 		lblNewLabel_5 = new JLabel("Hệ 10");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_5.setBounds(653, 334, 45, 27);
+		lblNewLabel_5.setBounds(653, 287, 45, 27);
 		panel_nhapDiem.add(lblNewLabel_5);
 		
 		textField_he4 = new JTextField();
 		textField_he4.setEditable(false);
 		textField_he4.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_he4.setBounds(708, 339, 85, 22);
+		textField_he4.setBounds(708, 290, 85, 22);
 		panel_nhapDiem.add(textField_he4);
 		textField_he4.setColumns(10);
 		
 		lblNewLabel_6 = new JLabel("Hạng");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_6.setBounds(653, 362, 45, 27);
+		lblNewLabel_6.setBounds(653, 327, 45, 27);
 		panel_nhapDiem.add(lblNewLabel_6);
 		
 		textField_hang = new JTextField();
 		textField_hang.setEditable(false);
 		textField_hang.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_hang.setBounds(708, 367, 85, 22);
+		textField_hang.setBounds(708, 330, 85, 22);
 		panel_nhapDiem.add(textField_hang);
 		textField_hang.setColumns(10);
 		
-		JSeparator separator_1_1_1 = new JSeparator();
-		separator_1_1_1.setBounds(0, 437, 841, 2);
-		panel_nhapDiem.add(separator_1_1_1);
-		
-		jButton_them = new JButton("Thêm");
-		jButton_them.setBackground(Color.GREEN);
-		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
-		jButton_them.addActionListener(actionListener);
-		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_them.setBounds(391, 455, 105, 35);
-		panel_nhapDiem.add(jButton_them);
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.CYAN);
+		panel_1.setBounds(15, 440, 826, 55);
+		panel_nhapDiem.add(panel_1);
+		panel_1.setLayout(null);
 		
 		jButton_xoa = new JButton("Xóa");
+		jButton_xoa.setBounds(34, 10, 105, 35);
+		panel_1.add(jButton_xoa);
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.setOpaque(true);
 		jButton_xoa.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\exit.png"));
 		jButton_xoa.addActionListener(actionListener);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_xoa.setBounds(73, 455, 105, 35);
-		panel_nhapDiem.add(jButton_xoa);
 		
 		jButton_capNhat = new JButton("Cập nhật");
+		jButton_capNhat.setBounds(194, 10, 105, 35);
+		panel_1.add(jButton_capNhat);
 		jButton_capNhat.setBackground(Color.GREEN);
 		jButton_capNhat.setOpaque(true);
 		jButton_capNhat.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\update.png"));
 		jButton_capNhat.addActionListener(actionListener);
 		jButton_capNhat.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_capNhat.setBounds(233, 455, 105, 35);
-		panel_nhapDiem.add(jButton_capNhat);
+		
+		jButton_them = new JButton("Thêm");
+		jButton_them.setBounds(363, 10, 105, 35);
+		panel_1.add(jButton_them);
+		jButton_them.setBackground(Color.GREEN);
+		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
+		jButton_them.addActionListener(actionListener);
+		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		jButton_huyBo = new JButton("Hủy bỏ");
+		jButton_huyBo.setBounds(541, 10, 101, 35);
+		panel_1.add(jButton_huyBo);
 		jButton_huyBo.setBackground(Color.RED);
 		jButton_huyBo.setOpaque(true);
 		jButton_huyBo.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\broom.png"));
 		jButton_huyBo.addActionListener(actionListener);
 		jButton_huyBo.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_huyBo.setBounds(561, 455, 101, 35);
-		panel_nhapDiem.add(jButton_huyBo);
 		
 		jButton_save = new JButton("Save");
+		jButton_save.setBounds(711, 10, 85, 35);
+		panel_1.add(jButton_save);
 		jButton_save.setBackground(Color.CYAN);
 		jButton_save.setOpaque(true);
 		jButton_save.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Save.png"));
 		jButton_save.addActionListener(actionListener);
 		jButton_save.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_save.setBounds(708, 455, 85, 35);
-		panel_nhapDiem.add(jButton_save);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.PINK);
+		panel.setBounds(259, 395, 321, 35);
+		panel_nhapDiem.add(panel);
+		
+		jButton_frist = new JButton("l<");
+		jButton_frist.setBackground(new Color(0, 0, 204));
+		jButton_frist.addActionListener(actionListener);
+		panel.setLayout(null);
+		jButton_frist.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jButton_frist.setBounds(10, 4, 47, 25);
+		panel.add(jButton_frist);
+		
+		jButton_prev = new JButton("<<");
+		jButton_prev.setBackground(new Color(51, 102, 255));
+		jButton_prev.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		jButton_prev.addActionListener(actionListener);;
+		jButton_prev.setBounds(93, 7, 47, 21);
+		panel.add(jButton_prev);
+		
+		jButton_next = new JButton(">>");
+		jButton_next.setBackground(new Color(51, 102, 255));
+		jButton_next.addActionListener(actionListener);;
+		jButton_next.setBounds(177, 7, 47, 21);
+		panel.add(jButton_next);
+		
+		jButton_last = new JButton(">l");
+		jButton_last.setBackground(new Color(0, 0, 204));
+		jButton_last.addActionListener(actionListener);;
+		jButton_last.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jButton_last.setBounds(264, 4, 47, 25);
+		panel.add(jButton_last);
 		
 		this.setVisible(true);
 	}
@@ -429,6 +459,63 @@ public class NhapDiemView extends JFrame {
 		}
 	}
 	
+	public void prev() {
+		if(this.model.getDsSinhVien().size() == 0) {
+			JOptionPane.showMessageDialog(this, "Lỗi");
+			
+	     } else if((currentIdx <= this.model.getDsSinhVien().size() - 1) && (currentIdx > 0) ) {
+	    	 currentIdx -=1;
+	    	 currentDiem = this.model.getDsSinhVien().get(currentIdx);
+	    	 displayDiem();
+	     }else{
+	    	 currentDiem = this.model.getDsSinhVien().get(this.model.getDsSinhVien().size() - 1);
+	    	 currentIdx = this.model.getDsSinhVien().size()-1;
+	    	 displayDiem();
+	     }
+	}
+	
+	public void next() {
+		if(this.model.getDsSinhVien().size() == 0) {
+			JOptionPane.showMessageDialog(this, "Lỗi");
+			
+		}else if(currentIdx < this.model.getDsSinhVien().size() - 1){
+			currentIdx += 1;
+			currentDiem = this.model.getDsSinhVien().get(currentIdx);
+			displayDiem();
+		}else { 
+			currentDiem = this.model.getDsSinhVien().get(0);
+			currentIdx = 0;
+			displayDiem();
+			
+		}
+	}
+	
+	public void last() {
+		if(this.model.getDsSinhVien().size() == 0) {
+			JOptionPane.showMessageDialog(this, "Lỗi");
+			
+		}else {
+			currentDiem = this.model.getDsSinhVien().get(this.model.getDsSinhVien().size() - 1);
+			currentIdx = 0;
+			displayDiem();
+		}	
+	}
+	
+	private void displayDiem() {
+		this.textField_maSinhVien.setText(this.currentIdx.);;
+//		this.textField_monHoc.setText(this.currentKhoaHoc.getMonHoc());
+//		this.textField_soTin.setText(this.currentKhoaHoc.getSoTin() + "");
+//		this.textField_hocPhi.setText(this.currentKhoaHoc.getHocPhi()+ "");
+		
+	}
+	
+	private static final long serialVersionUID = 1L;
+	private SinhVien currentDiem;
+	private int currentIdx;
+	private JButton jButton_frist;
+	private JButton jButton_prev;
+	private JButton jButton_next;
+	private JButton jButton_last;
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField_maSinhVien;
@@ -456,4 +543,6 @@ public class NhapDiemView extends JFrame {
 	private JLabel jLabel_maSinhVien_1;
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
+	private JPanel panel_1;
+	private JPanel panel;
 }

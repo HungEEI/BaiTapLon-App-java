@@ -18,11 +18,18 @@ import javax.swing.table.DefaultTableModel;
 import controller.KhoaHocController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
+import model.SinhVien;
+
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.awt.Toolkit;
 
 public class KhoaHocView extends JFrame {
@@ -214,6 +221,7 @@ public class KhoaHocView extends JFrame {
 		panel_1.add(scrollPane);
 		
 		btnNewButton = new JButton("File");
+		btnNewButton.addActionListener(ac);
 		btnNewButton.setBackground(new Color(102, 204, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(444, 271, 85, 30);
@@ -299,6 +307,23 @@ public class KhoaHocView extends JFrame {
 		}
 	}
 	
+	public void thucHienTaiLaiDuLieu() {
+		while (true) {
+			DefaultTableModel model_table = (DefaultTableModel) table_khoaHoc.getModel();
+			int soLuongDong = model_table.getRowCount();
+			if(soLuongDong==0)
+				break;
+			else
+				try {
+					model_table.removeRow(0);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		for (KhoaHoc kh : this.model_kh.getDsKhoaHoc()) {
+			this.themMonHocVaoTable(kh);;
+		}
+	}		
 	public void saveFile(String path) {
 		try {
 			this.model_kh.setTenFile(path);
@@ -313,6 +338,19 @@ public class KhoaHocView extends JFrame {
 		}
 	}
 	
+//////CSV
+	public void fileCSV() {
+		try {
+			FileWriter writer = new FileWriter("DanhSachKhoaHoc.csv");
+				for(KhoaHoc khoaHoc : this.model_kh.getDsKhoaHoc()) {
+					writer.write(khoaHoc.toString()+ "\n");
+			}
+			writer.close();	
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+	
 	public void thucHienSaveFile() {
 		if(this.model_kh.getTenFile().length()>0) {
 			saveFile(this.model_kh.getTenFile());
@@ -325,6 +363,34 @@ public class KhoaHocView extends JFrame {
 			} 
 		}
 		hienThiSave();
+	}
+	
+	public void openFile(File file) {
+		ArrayList<KhoaHoc> ds = new ArrayList<KhoaHoc>();
+		try {
+			this.model_kh.setTenFile(file.getAbsolutePath());
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			KhoaHoc kh = null;
+			while((kh = (KhoaHoc) ois.readObject())!=null) {
+				ds.add(kh);
+			}
+			ois.close();
+			fis.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		this.model_kh.setDsKhoaHoc(ds);
+	}
+	
+	public void thucHienOpenFile() {
+		JFileChooser fc = new JFileChooser();
+		int returnVal = fc.showOpenDialog(this);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			File file = fc.getSelectedFile();
+			openFile(file);
+			thucHienTaiLaiDuLieu();
+		} 
 	}
 	
 	public void hienThiSave() {

@@ -52,4 +52,11 @@ public class KhoaHoc implements Serializable{
 	public void setHocPhi(float hocPhi) {
 		this.hocPhi = hocPhi;
 	}
+
+	@Override
+	public String toString() {
+		return  maHocPhan + ", " + monHoc + ", " + soTin + ", " + hocPhi;
+	}
+	
+	
 }

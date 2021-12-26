@@ -126,12 +126,12 @@ public class SinhVienView extends JFrame {
 		panel_sinhVien.add(jButton_huyTim);
 		
 		menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 45, 27);
+		menuBar.setBounds(0, 0, 35, 27);
 		panel_sinhVien.add(menuBar);
 		
 		mnNewMenu = new JMenu("File");
 		mnNewMenu.setForeground(Color.BLUE);
-		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		menuBar.add(mnNewMenu);
 		
 		jMenuItem_open = new JMenuItem("Open");
@@ -159,7 +159,7 @@ public class SinhVienView extends JFrame {
 			},
 			new String[] {
 				" MÃ SINH VIÊN", "   HỌ VÀ TÊN", "   QUÊ QUÁN", "   NGÀY SINH", "   GIỚI TÍNH",
-				"  CHUYÊN CẦN", "     GIỮA KỲ", "     CUỐI KỲ", "        HỆ 10", "       HẠNG"
+				"  CHUYÊN CẦN", "     GIỮA KỲ", "     CUỐI KỲ", "       HỆ 10", "       HẠNG"
 			}
 		));
 		table.setRowHeight(25);
@@ -280,7 +280,7 @@ public class SinhVienView extends JFrame {
 		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
 		jButton_them.addActionListener(actionListener);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_them.setBounds(418, 455, 105, 35);
+		jButton_them.setBounds(392, 455, 105, 35);
 		panel_sinhVien.add(jButton_them);
 		
 		jButton_xoa = new JButton("Xóa");
@@ -289,7 +289,7 @@ public class SinhVienView extends JFrame {
 		jButton_xoa.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\exit.png"));
 		jButton_xoa.addActionListener(actionListener);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_xoa.setBounds(131, 455, 105, 35);
+		jButton_xoa.setBounds(65, 455, 105, 35);
 		panel_sinhVien.add(jButton_xoa);
 		
 		jButton_capNhat = new JButton("Cập nhật");
@@ -298,7 +298,7 @@ public class SinhVienView extends JFrame {
 		jButton_capNhat.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\update.png"));
 		jButton_capNhat.addActionListener(actionListener);
 		jButton_capNhat.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_capNhat.setBounds(276, 455, 105, 35);
+		jButton_capNhat.setBounds(224, 455, 105, 35);
 		panel_sinhVien.add(jButton_capNhat);
 		
 		jButton_huyBo = new JButton("Hủy bỏ");
@@ -307,7 +307,7 @@ public class SinhVienView extends JFrame {
 		jButton_huyBo.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\broom.png"));
 		jButton_huyBo.addActionListener(actionListener);
 		jButton_huyBo.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_huyBo.setBounds(561, 455, 101, 35);
+		jButton_huyBo.setBounds(541, 455, 101, 35);
 		panel_sinhVien.add(jButton_huyBo);
 		
 		jButton_save = new JButton("Save");
