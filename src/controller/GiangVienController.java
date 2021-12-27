@@ -43,11 +43,11 @@ public class GiangVienController implements ActionListener {
 			
 		}else if(st.equals("Save")) {
 			this.giaoVienView.thucHienSaveFile();
+			this.giaoVienView.FileCSV();
 			
 		}else if(st.equals("Open")) {
 			this.giaoVienView.thucHienOpenFile();
 			
-		}	
-		
+		}		
 	}	
 }

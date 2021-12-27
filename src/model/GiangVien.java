@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GiangVien {
@@ -59,5 +60,13 @@ public class GiangVien {
 
 	public void setLuong(float luong) {
 		this.luong = luong;
+	}
+	
+	SimpleDateFormat spt = new SimpleDateFormat("dd/MM/yyyy");
+
+	@Override
+	public String toString() {
+		return  hoVaTen + ", " + spt.format(ngaySinh) + ", " + email + ", " + (hocVi ? "PGS.TS" : "TS") + ", " + luong;
 	}	
+		
 }

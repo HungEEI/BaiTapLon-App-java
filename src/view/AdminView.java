@@ -202,7 +202,7 @@ public class AdminView extends JFrame {
 	public void thoatKhoiChuongTrinh() {
 		int luaChon = JOptionPane.showConfirmDialog(
 			    this,
-			    "Bạn có muốn thoát khỏi chương trình?",
+			    "Bạn có muốn thoát?",
 			    "Thoát",
 			    JOptionPane.YES_NO_OPTION);
 		if (luaChon == JOptionPane.YES_OPTION) {

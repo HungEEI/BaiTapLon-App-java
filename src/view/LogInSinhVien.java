@@ -32,6 +32,7 @@ public class LogInSinhVien extends JFrame {
 		this.userDAO = new UserDAO();
 		this.setSize(450, 300);
 		this.setTitle("LOG IN");
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Home.png"));
 		this.setLocationRelativeTo(null);

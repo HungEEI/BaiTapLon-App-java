@@ -78,4 +78,27 @@ public class SinhVienModel {
 		if(9 <= he4 && he4 <= 10) hang = "A+";
 		return hang;
 	}	
+	
+	public double he10(String hang) {
+		double gpa = 0;
+		if(hang.equals("F")) gpa = 0;
+		if(hang.equals("D")) gpa = 1.0;
+		if(hang.equals("D+")) gpa = 1.5;
+		if(hang.equals("C")) gpa = 2;
+		if(hang.equals("C+")) gpa = 2.5;
+		if(hang.equals("B")) gpa = 3;
+		if(hang.equals("B+")) gpa = 3.5;
+		if(hang.equals("A")) gpa = 3.7;
+		if(hang.equals("A+")) gpa = 4.0;
+		
+		return gpa;
+	}
+
 }
+
+
+
+
+
+
+

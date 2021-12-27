@@ -158,8 +158,7 @@ public class SinhVienView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				" MÃ SINH VIÊN", "   HỌ VÀ TÊN", "   QUÊ QUÁN", "   NGÀY SINH", "   GIỚI TÍNH",
-				"  CHUYÊN CẦN", "     GIỮA KỲ", "     CUỐI KỲ", "       HỆ 10", "       HẠNG"
+				" M\u00C3 SINH VI\u00CAN", "   H\u1ECC V\u00C0 T\u00CAN", "   QU\u00CA QU\u00C1N", "   NG\u00C0Y SINH", "   GI\u1EDAI T\u00CDNH", "  CHUY\u00CAN C\u1EA6N", "     GI\u1EEEA K\u1EF2", "     CU\u1ED0I K\u1EF2", "       H\u1EC6 10", "       H\u1EA0NG", "Hệ 4"
 			}
 		));
 		table.setRowHeight(25);
@@ -333,15 +332,26 @@ public class SinhVienView extends JFrame {
 		
 		jLabel_hang = new JLabel("Hạng");
 		jLabel_hang.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_hang.setBounds(653, 362, 45, 27);
+		jLabel_hang.setBounds(653, 390, 45, 27);
 		panel_sinhVien.add(jLabel_hang);
 		
 		textField_hang = new JTextField();
 		textField_hang.setEditable(false);
 		textField_hang.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_hang.setBounds(708, 367, 85, 22);
+		textField_hang.setBounds(708, 393, 85, 22);
 		panel_sinhVien.add(textField_hang);
 		textField_hang.setColumns(10);		
+		
+		JLabel lblNewLabel_2 = new JLabel("Hệ 4\r\n");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(653, 364, 45, 22);
+		panel_sinhVien.add(lblNewLabel_2);
+		
+		textField_he10 = new JTextField();
+		textField_he10.setEditable(false);
+		textField_he10.setBounds(708, 366, 85, 22);
+		panel_sinhVien.add(textField_he10);
+		textField_he10.setColumns(10);
 		
 		this.setVisible(true);
 	}
@@ -356,6 +366,7 @@ public class SinhVienView extends JFrame {
 		textField_cuoiKy.setText("");
 		textField_he4.setText("");
 		textField_hang.setText("");
+		textField_he10.setText("");
 		comboBox_queQuan.setSelectedIndex(-1);
 		btn_gioiTinh.clearSelection();
 	}
@@ -369,7 +380,7 @@ public class SinhVienView extends JFrame {
 										 date_Format.format(sv.getNgaySinh(null)),
 										 (sv.isGioiTinh() ? "Nam" : "Nữ"), sv.getChuyenCan() + "", 
 										 sv.getGiuaKy() + "", sv.getCuoiKy() + "",
-										 sv.getHe4(), sv.getHang()});
+										 sv.getHe4(), sv.getHang(), sv.getHe10()});
 	}
 	
 	public void themHoacCapNhatSinhVien(SinhVien sv) {
@@ -393,7 +404,7 @@ public class SinhVienView extends JFrame {
 					model_table.setValueAt(sv.getCuoiKy() + "", i, 7);
 					model_table.setValueAt(sv.getHe4() + "", i, 8);
 					model_table.setValueAt(sv.getHang() + "", i, 9);
-					
+					model_table.setValueAt(sv.getHe10() + "", i, 10);
 				}
 			}
 		}
@@ -421,8 +432,10 @@ public class SinhVienView extends JFrame {
 		textField_he4.setText(he4+"");					
 		String hang = model.hang(he4);
 		textField_hang.setText(hang);
+		double he10 = model.he10(hang);
+		textField_he10.setText(he10+ "");
 		
-		SinhVien sv = new SinhVien(maSinhVien, hoVaTen, tinh, ngaySinh, gioiTinh, chuyenCan, giuaKy, cuoiKy, he4, hang);
+		SinhVien sv = new SinhVien(maSinhVien, hoVaTen, tinh, ngaySinh, gioiTinh, chuyenCan, giuaKy, cuoiKy, he4, hang, he10);
 		this.themHoacCapNhatSinhVien(sv);
 	}
 	
@@ -438,7 +451,6 @@ public class SinhVienView extends JFrame {
 		try {
 			ngaySinh = date_Format.parse(model_table.getValueAt(i_row, 3) + "");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -449,9 +461,10 @@ public class SinhVienView extends JFrame {
 		float cuoiKy = Float.valueOf(model_table.getValueAt(i_row, 7) + "");
 		float he4 = Float.valueOf(model_table.getValueAt(i_row, 8) + "");
 		String hang = model_table.getValueAt(i_row, 9) + "";
+		double he10 = Double.valueOf(model_table.getValueAt(i_row, 10)+ "");
 	
 		SinhVien sv = new SinhVien(maSinhVien, hoVaTen, tinh, ngaySinh, gioiTinh, 
-									chuyenCan, giuaKy, cuoiKy, he4, hang);
+									chuyenCan, giuaKy, cuoiKy, he4, hang, he10);
 		
 		return sv;
 	}
@@ -473,6 +486,7 @@ public class SinhVienView extends JFrame {
 		this.textField_cuoiKy.setText(sv.getCuoiKy() + "");
 		this.textField_he4.setText(sv.getHe4() + "");
 		this.textField_hang.setText(sv.getHang() + "");
+		this.textField_he10.setText(sv.getHe10() + "");
 	}
 		
 	public void thucHienTim() {
@@ -671,4 +685,5 @@ public class SinhVienView extends JFrame {
 	private JLabel jLabel_CuoiKy;
 	private JLabel jLabel_he10;
 	private JLabel jLabel_hang;
+	private JTextField textField_he10;
 }

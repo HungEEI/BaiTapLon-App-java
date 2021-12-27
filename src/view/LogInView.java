@@ -19,16 +19,6 @@ import java.awt.Toolkit;
 
 public class LogInView extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;
-	public JTextField textField_dangNhap;
-	public JPasswordField textField_matKhau;
-	public JButton jButton_dangNhap;
-	public JButton jButton_huy;
-	
-	public UserDAO userDAO;
-
 	public LogInView() {
 		
 		this.userDAO = new UserDAO();
@@ -47,18 +37,18 @@ public class LogInView extends JFrame {
 		
 		ActionListener action = new LogInController(this);
 		
-		JLabel jLabel = new JLabel("ĐĂNG NHẬP ADMINS");
+		jLabel = new JLabel("ĐĂNG NHẬP ADMINS");
 		jLabel.setBounds(115, 10, 249, 37);
 		jLabel.setForeground(Color.BLUE);
 		jLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		contentPane.add(jLabel);
 		
-		JLabel jLabel_dangNhap = new JLabel("Tên đăng nhập");
+		jLabel_dangNhap = new JLabel("Tên đăng nhập");
 		jLabel_dangNhap.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jLabel_dangNhap.setBounds(36, 70, 101, 28);
 		contentPane.add(jLabel_dangNhap);
 		
-		JLabel jLabel_matKhau = new JLabel("Mật khẩu");
+		jLabel_matKhau = new JLabel("Mật khẩu");
 		jLabel_matKhau.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jLabel_matKhau.setBounds(36, 126, 70, 28);
 		contentPane.add(jLabel_matKhau);
@@ -125,4 +115,15 @@ public class LogInView extends JFrame {
 	public void hienThiLoiNhap() {
 		JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng");
 	}
+	
+	private static final long serialVersionUID = 1L;	
+	private JPanel contentPane;
+	private JLabel jLabel;
+	private JLabel jLabel_dangNhap;
+	private JLabel jLabel_matKhau;
+	public JTextField textField_dangNhap;
+	public JPasswordField textField_matKhau;
+	public JButton jButton_dangNhap;
+	public JButton jButton_huy;	
+	public UserDAO userDAO;
 }

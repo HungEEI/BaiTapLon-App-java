@@ -23,7 +23,7 @@ public class QueQuan implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Quê quán: " + tenTinh;
+		return "" + tenTinh;
 	}
 	
 	public static ArrayList<QueQuan> getDSTinh(){

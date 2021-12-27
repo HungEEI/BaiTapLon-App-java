@@ -45,6 +45,17 @@ public class NhapDiemController implements ActionListener{
 		}else if(cm.equals("Open")) {
 			this.nhapDiemView.thucHienOpenFile();
 			
+		}else if(cm.equals("l<")) {
+			this.nhapDiemView.first();
+		
+		}else if(cm.equals(">>")) {
+			this.nhapDiemView.next();;
+			
+		}else if(cm.equals("<<")) {
+			this.nhapDiemView.prev();
+						
+		}else if(cm.equals(">l")) {
+			this.nhapDiemView.last();
 		}	
 		
 	}

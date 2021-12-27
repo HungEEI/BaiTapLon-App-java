@@ -14,6 +14,7 @@ public class SinhVien implements Serializable{
 	private Date ngaySinh;
 	private boolean gioiTinh;
 	private float chuyenCan, giuaKy, cuoiKy, he4;
+	private double he10;
 	private String hang;
 	private String monHoc;
 	
@@ -21,7 +22,7 @@ public class SinhVien implements Serializable{
 	}
 
 	public SinhVien(int maSinhVien, String hoVaTen, QueQuan queQuan, Date ngaySinh, 
-					boolean gioiTinh, float chuyenCan, float giuaKy, float cuoiKy, float he4, String hang) {
+					boolean gioiTinh, float chuyenCan, float giuaKy, float cuoiKy, float he4, String hang, Double he10) {
 		this.maSinhVien = maSinhVien;
 		this.hoVaTen = hoVaTen;
 		this.queQuan = queQuan;
@@ -32,6 +33,7 @@ public class SinhVien implements Serializable{
 		this.cuoiKy = cuoiKy;
 		this.he4 = he4;
 		this.hang = hang;	
+		this.he10 = he10;
 	}
 	
 	
@@ -135,13 +137,21 @@ public class SinhVien implements Serializable{
 		this.hang = hang;
 	}
 	
+	public double getHe10() {
+		return he10;
+	}
+
+	public void setHe10(double he10) {
+		this.he10 = he10;
+	}
+
 	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override
 	public String toString() {
-		return "Mã sinh Viên: " + maSinhVien + ", Họ và tên: " + hoVaTen + ", " + queQuan +
-				", Ngày Sinh: "+ format.format(ngaySinh) + (", Giới tính: " + gioiTinh != null ? ", Giới tính: nam" : ", Giới tính: nữ")
-				+ ", Chuyên Cần: " + chuyenCan + ", Giữa kỳ: " + giuaKy + ", Cuối kỳ: "
-				+ cuoiKy + ", Hệ 10: " + he4 + ", Hạng: " + hang;
+		return maSinhVien + ", " + hoVaTen + ", " + queQuan +
+				", "+ format.format(ngaySinh) + (", " + gioiTinh != null ? ", Giới tính: nam" : ", Giới tính: nữ")
+				+ ", " + chuyenCan + ", " + giuaKy + ", "
+				+ cuoiKy + ", " + he4 + ", " + hang + ", " + he10;
 	}	
 }

@@ -31,6 +31,8 @@ import javax.swing.JSeparator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
@@ -45,6 +47,7 @@ import java.awt.Toolkit;
 public class GiaoVienView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private ButtonGroup btn_hocVi2;
 
 	public GiaoVienView() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\10218-man-teacher-icon.png"));
@@ -92,12 +95,12 @@ public class GiaoVienView extends JFrame {
 		panel_giangVien.add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("File");
-		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		mnNewMenu.setForeground(Color.BLUE);
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem jMenuItem_open = new JMenuItem("Open");
-		jMenuItem_open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+		jMenuItem_open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
 		jMenuItem_open.setForeground(Color.BLUE);
 		jMenuItem_open.addActionListener(actionListener);
 		mnNewMenu.add(jMenuItem_open);
@@ -217,7 +220,7 @@ public class GiaoVienView extends JFrame {
 		
 		rd_TS = new JRadioButton("TS");
 		rd_TS.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rd_TS.setBounds(328, 405, 76, 21);
+		rd_TS.setBounds(289, 405, 52, 21);
 		panel_giangVien.add(rd_TS);
 		
 		btn_hocVi = new ButtonGroup();
@@ -267,9 +270,9 @@ public class GiaoVienView extends JFrame {
 			String email = this.textField_email.getText();
 		
 			boolean hocVi = true;
-			if (this.rd_TS.isSelected()) {
+			if(this.rd_TS.isSelected()) {
 				hocVi = true;
-			} else if (this.rd_PGSTS.isSelected()) {
+			} else if(this.rd_PGSTS.isSelected()) {
 				hocVi = false;
 			}
 			
@@ -361,6 +364,19 @@ public class GiaoVienView extends JFrame {
 			}
 			oos.close();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+//////---FileCSV
+	public void FileCSV() {
+		try {
+			FileWriter 	writer = new FileWriter("DanhSachGiangVien.csv");
+			for (GiangVien giangVien : this.model.getDsGiangVien()) {
+				writer.write(giangVien.toString() + "\n");
+			}
+			writer.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
