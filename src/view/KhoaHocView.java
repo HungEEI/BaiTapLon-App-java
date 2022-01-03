@@ -18,8 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import controller.KhoaHocController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
-import model.SinhVien;
-
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,6 +29,7 @@ import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class KhoaHocView extends JFrame {
 
@@ -68,6 +67,7 @@ public class KhoaHocView extends JFrame {
 		contentPane.add(separator);
 		
 		jButton_them = new JButton("Thêm");
+		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
 		jButton_them.setBackground(Color.GREEN);
 		jButton_them.addActionListener(ac);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -81,6 +81,7 @@ public class KhoaHocView extends JFrame {
 		contentPane.add(jButton_sua);
 		
 		jButton_xoa = new JButton("Xóa");
+		jButton_xoa.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\exit.png"));
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.addActionListener(ac);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));

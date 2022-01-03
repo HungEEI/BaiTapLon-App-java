@@ -37,6 +37,5 @@ public class User {
 
 	public void setRole(boolean role) {
 		this.role = role;
-	}
-	
+	}	
 }

@@ -26,7 +26,7 @@ public class ChangePassView extends JFrame {
 		
 		setSize(450, 300);
 		setTitle("ĐỔI MẬT KHẨU");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.CYAN);

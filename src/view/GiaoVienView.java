@@ -47,7 +47,6 @@ import java.awt.Toolkit;
 public class GiaoVienView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private ButtonGroup btn_hocVi2;
 
 	public GiaoVienView() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\10218-man-teacher-icon.png"));

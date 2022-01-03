@@ -93,7 +93,7 @@ public class LogInView extends JFrame {
 	
 	public void giaoDien() {
 		if(checkForm()) {
-			String name = textField_dangNhap.getText();
+			String name = textField_dangNhap.getText().trim();
 			String pass = new String(textField_matKhau.getPassword());
 			UserDAO dao = new UserDAO();
 			if(dao.checkLogIn(name, pass)) {

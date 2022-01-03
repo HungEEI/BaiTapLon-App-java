@@ -23,6 +23,9 @@ public class DangKyController implements ActionListener {
 			
 		}else if(t.equals("Đóng")) {
 			this.dk.dispose();
+			
+		}else if(t.equals("Đăng ký")) {
+			this.dk.hienThiThongTinKhoaHocDaChon();
 		}
 		
 	}

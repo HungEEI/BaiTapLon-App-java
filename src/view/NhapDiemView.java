@@ -100,12 +100,12 @@ public class NhapDiemView extends JFrame {
 		
 		jlabel_chuyenCan = new JLabel("Chuyên Cần");
 		jlabel_chuyenCan.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jlabel_chuyenCan.setBounds(362, 276, 73, 17);
+		jlabel_chuyenCan.setBounds(369, 276, 73, 17);
 		panel_nhapDiem.add(jlabel_chuyenCan);
 		
 		jLabel_giuaKy = new JLabel("Giữa kỳ");
 		jLabel_giuaKy.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jLabel_giuaKy.setBounds(362, 316, 66, 18);
+		jLabel_giuaKy.setBounds(369, 316, 66, 18);
 		panel_nhapDiem.add(jLabel_giuaKy);
 		
 		jLabel_CuoiKy = new JLabel("Cuối kỳ");
@@ -437,7 +437,7 @@ public class NhapDiemView extends JFrame {
 	public void thoatKhoiChuongTrinh() {
 		int luaChon = JOptionPane.showConfirmDialog(
 			    this,
-			    "Bạn có muốn thoát khỏi chương trình?",
+			    "Bạn có muốn thoát?",
 			    "Thoát",
 			    JOptionPane.YES_NO_OPTION);
 		if (luaChon == JOptionPane.YES_OPTION) {

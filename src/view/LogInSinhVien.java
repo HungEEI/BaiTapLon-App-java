@@ -19,14 +19,6 @@ import model.UserDAO;
 
 public class LogInSinhVien extends JFrame {
 
-	private JPanel contentPane;
-	private JButton jButton_dangNhap;
-	private JButton jButton_huy;
-	private JTextField textField_dangNhap2;
-	private JPasswordField textField_matKhau2;
-	
-	public UserDAO userDAO;
-
 	public LogInSinhVien() {
 		
 		this.userDAO = new UserDAO();
@@ -122,4 +114,12 @@ public class LogInSinhVien extends JFrame {
 	public void hienThiLoiNhap() {
 		JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng");
 	}
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JButton jButton_dangNhap;
+	private JButton jButton_huy;
+	private JTextField textField_dangNhap2;
+	private JPasswordField textField_matKhau2;
+	public UserDAO userDAO;
 }

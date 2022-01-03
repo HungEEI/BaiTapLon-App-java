@@ -55,6 +55,17 @@ public class SinhVienController implements ActionListener {
 		}else if(cm.equals("Open")) {
 			this.sinhVienView.thucHienOpenFile();
 			
+		}else if(cm.equals("l<")) {
+			this.sinhVienView.first();
+		
+		}else if(cm.equals(">>")) {
+			this.sinhVienView.next();;
+			
+		}else if(cm.equals("<<")) {
+			this.sinhVienView.prev();
+						
+		}else if(cm.equals(">l")) {
+			this.sinhVienView.last();
 		}	
 	}
 }

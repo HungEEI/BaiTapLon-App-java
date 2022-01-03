@@ -25,17 +25,9 @@ import controller.DangKyController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
 import java.awt.Toolkit;
+import javax.swing.JTextArea;
 
 public class DangKyHocView extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;
-	public KhoaHocModel model;
-	private JButton jButton_dong;
-	private JTable table_kh;
-	private JButton jButton_open;
-	private JTable table;
 
 	public DangKyHocView() {
 		setTitle("ĐĂNG KÝ");
@@ -91,26 +83,18 @@ public class DangKyHocView extends JFrame {
 		jButton_open.setBounds(10, 0, 135, 35);
 		panel_ketQuaHoc.add(jButton_open);
 		
-		JButton btnNewButton = new JButton("Đăng ký");
+		btnNewButton = new JButton("Đăng ký");
+		btnNewButton.addActionListener(abc);
 		btnNewButton.setForeground(Color.BLUE);
 		btnNewButton.setBackground(new Color(102, 205, 170));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(43, 229, 85, 35);
 		panel_ketQuaHoc.add(btnNewButton);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"", "", "", ""
-			}
-		));
-		table.setRowHeight(25);
-		
-		JScrollPane scrollPane_1 = new JScrollPane(table);
-		scrollPane_1.setBounds(190, 239, 504, 127);
-		panel_ketQuaHoc.add(scrollPane_1);
+		textArea = new JTextArea();
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		textArea.setBounds(138, 235, 556, 131);
+		panel_ketQuaHoc.add(textArea);
 		
 		JLabel lblNewLabel = new JLabel("Đăng Ký Môn Học");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -183,5 +167,33 @@ public class DangKyHocView extends JFrame {
 			this.dispose();
 			new PhanCapView();
 		}
-	}	
+	}
+	
+	public KhoaHoc getKhoaHocDangChon() {
+		DefaultTableModel md_tb = (DefaultTableModel) table_kh.getModel();
+		int row = table_kh.getSelectedRow();
+		
+		String maHocPhan = md_tb.getValueAt(row, 0) + "";
+		String monHoc = md_tb.getValueAt(row, 1) + "";
+		int soTin = Integer.valueOf(md_tb.getValueAt(row, 2) + "");
+		float hocPhi = Float.valueOf(md_tb.getValueAt(row, 3) + "");
+		
+		KhoaHoc kh = new KhoaHoc(maHocPhan, monHoc, soTin, hocPhi);
+		
+		return kh;			
+	}
+	
+	public void hienThiThongTinKhoaHocDaChon() {
+		KhoaHoc kh = getKhoaHocDangChon();
+		this.textArea.setText(kh.toString());
+	}
+	
+	private static final long serialVersionUID = 1L;	
+	private JPanel contentPane;
+	public KhoaHocModel model;
+	private JButton jButton_dong;
+	private JTable table_kh;
+	private JButton jButton_open;
+	private JTextArea textArea;
+	private JButton btnNewButton;
 }
