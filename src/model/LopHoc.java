@@ -10,8 +10,7 @@ public class LopHoc implements Serializable{
 	private int id;
 	private LopHoc tenPhong;
 	private int soLuong;
-	private boolean trangThai;
-	
+	private boolean trangThai;	
 	private String ten;
 	
 	public LopHoc() {

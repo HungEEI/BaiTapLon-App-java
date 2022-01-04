@@ -26,15 +26,17 @@ import model.KhoaHoc;
 import model.KhoaHocModel;
 import java.awt.Toolkit;
 import javax.swing.JTextArea;
+import javax.swing.DropMode;
 
 public class DangKyHocView extends JFrame {
 
+	private JButton jButton_huy;
 	public DangKyHocView() {
 		setTitle("ĐĂNG KÝ");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
 		this.model = new KhoaHocModel();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(745, 500);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.setSize(745, 590);
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(245, 245, 220));
@@ -45,7 +47,7 @@ public class DangKyHocView extends JFrame {
 		ActionListener abc = new DangKyController(this);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 49, 709, 403);
+		tabbedPane.setBounds(10, 49, 709, 494);
 		contentPane.add(tabbedPane);
 		
 		jButton_dong = new JButton("Đóng");
@@ -83,18 +85,47 @@ public class DangKyHocView extends JFrame {
 		jButton_open.setBounds(10, 0, 135, 35);
 		panel_ketQuaHoc.add(jButton_open);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 153, 102));
+		panel.setBounds(10, 203, 684, 254);
+		panel_ketQuaHoc.add(panel);
+		panel.setLayout(null);
+		
 		btnNewButton = new JButton("Đăng ký");
+		btnNewButton.setBounds(10, 22, 85, 35);
+		panel.add(btnNewButton);
 		btnNewButton.addActionListener(abc);
 		btnNewButton.setForeground(Color.BLUE);
 		btnNewButton.setBackground(new Color(102, 205, 170));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton.setBounds(43, 229, 85, 35);
-		panel_ketQuaHoc.add(btnNewButton);
+		
+		table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"", "", "", ""
+			}
+		));
+		table.setRowHeight(23);
+		
+		JScrollPane scrollPane_1 = new JScrollPane(table);
+		scrollPane_1.setBounds(118, 50, 556, 158);
+		panel.add(scrollPane_1);
 		
 		textArea = new JTextArea();
+		textArea.setBounds(118, 10, 556, 30);
+		panel.add(textArea);
+		textArea.setEditable(false);
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 16));
-		textArea.setBounds(138, 235, 556, 131);
-		panel_ketQuaHoc.add(textArea);
+		
+		jButton_huy = new JButton("Hủy môn học");
+		jButton_huy.addActionListener(abc);
+		jButton_huy.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jButton_huy.setBackground(Color.RED);
+		jButton_huy.setBounds(538, 218, 136, 28);
+		panel.add(jButton_huy);
 		
 		JLabel lblNewLabel = new JLabel("Đăng Ký Môn Học");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -108,6 +139,12 @@ public class DangKyHocView extends JFrame {
 	
 	public void themDiemVaoTable_KH(KhoaHoc kh) {
 		DefaultTableModel model_table = (DefaultTableModel) table_kh.getModel();
+		model_table.addRow(new Object[] {kh.getMaHocPhan(), kh.getMonHoc(),
+										kh.getSoTin()+ "", kh.getHocPhi()+ ""});
+	}
+	
+	public void themDiemVaoTable_KH2(KhoaHoc kh) {
+		DefaultTableModel model_table = (DefaultTableModel) table.getModel();
 		model_table.addRow(new Object[] {kh.getMaHocPhan(), kh.getMonHoc(),
 										kh.getSoTin()+ "", kh.getHocPhi()+ ""});
 	}
@@ -186,6 +223,19 @@ public class DangKyHocView extends JFrame {
 	public void hienThiThongTinKhoaHocDaChon() {
 		KhoaHoc kh = getKhoaHocDangChon();
 		this.textArea.setText(kh.toString());
+		this.themDiemVaoTable_KH2(kh);
+	}
+	
+	public void thucHienXoa() {
+		DefaultTableModel md_tb = (DefaultTableModel) table.getModel();
+		int i_row = table.getSelectedRow();
+		int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có muốn hủy môn học này?",
+													"Xóa", JOptionPane.YES_NO_OPTION);
+		if (luaChon == JOptionPane.YES_OPTION) {
+			KhoaHoc kh = getKhoaHocDangChon();
+			this.model.delete(kh);
+			md_tb.removeRow(i_row);
+		}
 	}
 	
 	private static final long serialVersionUID = 1L;	
@@ -196,4 +246,5 @@ public class DangKyHocView extends JFrame {
 	private JButton jButton_open;
 	private JTextArea textArea;
 	private JButton btnNewButton;
+	private JTable table;
 }

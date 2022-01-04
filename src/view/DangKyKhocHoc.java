@@ -41,7 +41,7 @@ public class DangKyKhocHoc extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
 		
 		this.model = new SinhVienModel();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setSize(745, 500);
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -165,7 +165,7 @@ public class DangKyKhocHoc extends JFrame {
 	public void thoatKhoiChuongTrinh() {
 		int luaChon = JOptionPane.showConfirmDialog(
 			    this,
-			    "Bạn có muốn thoát khỏi chương trình?",
+			    "Bạn có muốn thoát?",
 			    "Thoát",
 			    JOptionPane.YES_NO_OPTION);
 		if (luaChon == JOptionPane.YES_OPTION) {

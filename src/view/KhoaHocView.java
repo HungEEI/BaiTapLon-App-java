@@ -42,7 +42,7 @@ public class KhoaHocView extends JFrame {
 	
 	public void init() {
 		this.model_kh = new KhoaHocModel();
-		this.setSize(1148, 452);
+		this.setSize(1136, 452);
 		this.setTitle("KHÓA HỌC");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -63,7 +63,7 @@ public class KhoaHocView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 48, 1124, 2);
+		separator.setBounds(10, 48, 1109, 2);
 		contentPane.add(separator);
 		
 		jButton_them = new JButton("Thêm");
