@@ -95,10 +95,3 @@ public class SinhVienModel {
 	}
 
 }
-
-
-
-
-
-
-

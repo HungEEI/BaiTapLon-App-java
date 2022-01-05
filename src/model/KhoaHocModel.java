@@ -7,7 +7,7 @@ public class KhoaHocModel {
 	private ArrayList<KhoaHoc> dsKhoaHoc;
 	private String luaChon;
 	private String tenFile;
-
+	
 	public KhoaHocModel() {
 		this.dsKhoaHoc = new ArrayList<KhoaHoc>();
 		this.luaChon = "";
@@ -50,7 +50,7 @@ public class KhoaHocModel {
 		this.dsKhoaHoc.remove(khoaHoc);
 		this.dsKhoaHoc.add(khoaHoc);
 	}
-	
+
 	public boolean kiemTraTonTai(KhoaHoc kh) {
 		for(KhoaHoc khoaHoc: dsKhoaHoc) {
 			if((khoaHoc.getMaHocPhan()).equals(kh.getMaHocPhan()))

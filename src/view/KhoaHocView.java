@@ -322,9 +322,10 @@ public class KhoaHocView extends JFrame {
 				}
 		}
 		for (KhoaHoc kh : this.model_kh.getDsKhoaHoc()) {
-			this.themMonHocVaoTable(kh);;
+			this.themMonHocVaoTable(kh);
 		}
-	}		
+	}	
+	
 	public void saveFile(String path) {
 		try {
 			this.model_kh.setTenFile(path);

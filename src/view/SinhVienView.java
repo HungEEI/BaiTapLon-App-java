@@ -16,11 +16,7 @@ import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -48,7 +44,6 @@ import controller.SinhVienController;
 import model.QueQuan;
 import model.SinhVien;
 import model.SinhVienModel;
-import java.awt.event.ActionEvent;
 
 public class SinhVienView extends JFrame {
 
@@ -361,7 +356,6 @@ public class SinhVienView extends JFrame {
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.setOpaque(true);
 		jButton_xoa.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\exit.png"));
-		jButton_xoa.addActionListener(actionListener);
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jButton_capNhat = new JButton("Cập nhật");
@@ -371,7 +365,6 @@ public class SinhVienView extends JFrame {
 		jButton_capNhat.setBackground(Color.GREEN);
 		jButton_capNhat.setOpaque(true);
 		jButton_capNhat.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\update.png"));
-		jButton_capNhat.addActionListener(actionListener);
 		jButton_capNhat.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jButton_them = new JButton("Thêm");
@@ -380,7 +373,6 @@ public class SinhVienView extends JFrame {
 		panel_2.add(jButton_them);
 		jButton_them.setBackground(Color.GREEN);
 		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
-		jButton_them.addActionListener(actionListener);
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jButton_huyBo = new JButton("Hủy bỏ");
@@ -390,7 +382,6 @@ public class SinhVienView extends JFrame {
 		jButton_huyBo.setBackground(Color.RED);
 		jButton_huyBo.setOpaque(true);
 		jButton_huyBo.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\broom.png"));
-		jButton_huyBo.addActionListener(actionListener);
 		jButton_huyBo.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jButton_save = new JButton("Save");
@@ -400,7 +391,6 @@ public class SinhVienView extends JFrame {
 		jButton_save.setBackground(Color.CYAN);
 		jButton_save.setOpaque(true);
 		jButton_save.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Save.png"));
-		jButton_save.addActionListener(actionListener);
 		jButton_save.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		this.setVisible(true);

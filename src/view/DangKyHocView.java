@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
@@ -26,11 +28,9 @@ import model.KhoaHoc;
 import model.KhoaHocModel;
 import java.awt.Toolkit;
 import javax.swing.JTextArea;
-import javax.swing.DropMode;
 
 public class DangKyHocView extends JFrame {
 
-	private JButton jButton_huy;
 	public DangKyHocView() {
 		setTitle("ĐĂNG KÝ");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Courses.png"));
@@ -126,6 +126,13 @@ public class DangKyHocView extends JFrame {
 		jButton_huy.setBackground(Color.RED);
 		jButton_huy.setBounds(538, 218, 136, 28);
 		panel.add(jButton_huy);
+		
+		jButton_dkh = new JButton("Lưu đăng kí học");
+		jButton_dkh.addActionListener(abc);
+		jButton_dkh.setBackground(Color.GREEN);
+		jButton_dkh.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jButton_dkh.setBounds(118, 218, 136, 26);
+		panel.add(jButton_dkh);
 		
 		JLabel lblNewLabel = new JLabel("Đăng Ký Môn Học");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -238,10 +245,25 @@ public class DangKyHocView extends JFrame {
 		}
 	}
 	
+	public void luuDangkiHoc() {
+		try {
+			FileWriter writer = new FileWriter("MonHocDangKi.csv");
+				for(KhoaHoc khoaHoc : this.model.getDsKhoaHoc2()) {
+					writer.write(khoaHoc.toString()+ "\n");
+			}
+			writer.close();	
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		JOptionPane.showMessageDialog(this ,"Lưu thành công");
+	}
+	
 	private static final long serialVersionUID = 1L;	
 	private JPanel contentPane;
 	public KhoaHocModel model;
 	private JButton jButton_dong;
+	private JButton jButton_huy;
+	private JButton jButton_dkh;
 	private JTable table_kh;
 	private JButton jButton_open;
 	private JTextArea textArea;
