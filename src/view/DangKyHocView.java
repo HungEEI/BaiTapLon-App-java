@@ -248,7 +248,7 @@ public class DangKyHocView extends JFrame {
 	public void luuDangkiHoc() {
 		try {
 			FileWriter writer = new FileWriter("MonHocDangKi.csv");
-				for(KhoaHoc khoaHoc : this.model.getDsKhoaHoc2()) {
+				for(KhoaHoc khoaHoc : this.model.getDsKhoaHoc()) {
 					writer.write(khoaHoc.toString()+ "\n");
 			}
 			writer.close();	

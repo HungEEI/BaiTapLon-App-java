@@ -21,7 +21,7 @@ public class SinhVien implements Serializable{
 	public SinhVien() {
 	}
 
-	public SinhVien(int maSinhVien, String hoVaTen, QueQuan queQuan, Date ngaySinh, 
+	public SinhVien(int maSinhVien, String hoVaTen, QueQuan queQuan, Date ngaySinh, String monHoc, 
 					boolean gioiTinh, float chuyenCan, float giuaKy, float cuoiKy, float he4, String hang, Double he10) {
 		this.maSinhVien = maSinhVien;
 		this.hoVaTen = hoVaTen;
@@ -34,6 +34,7 @@ public class SinhVien implements Serializable{
 		this.he4 = he4;
 		this.hang = hang;	
 		this.he10 = he10;
+		this.monHoc = monHoc;
 	}
 	
 	
@@ -151,7 +152,7 @@ public class SinhVien implements Serializable{
 	public String toString() {
 		return maSinhVien + ", " + hoVaTen + ", " + queQuan +
 				", "+ format.format(ngaySinh) + (", " + gioiTinh != null ? ", Giới tính: nam" : ", Giới tính: nữ")
-				+ ", " + chuyenCan + ", " + giuaKy + ", "
+				+ ", " + monHoc + ", " + + chuyenCan + ", " + giuaKy + ", "
 				+ cuoiKy + ", " + he4 + ", " + hang + ", " + he10;
 	}	
 }
