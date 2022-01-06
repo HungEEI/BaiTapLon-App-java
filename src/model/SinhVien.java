@@ -1,12 +1,9 @@
 package model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SinhVien implements Serializable{
-
-	private static final long serialVersionUID = 1L;
 	
 	private int maSinhVien;
 	private String hoVaTen;
@@ -145,14 +142,5 @@ public class SinhVien implements Serializable{
 	public void setHe10(double he10) {
 		this.he10 = he10;
 	}
-
-	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-
-	@Override
-	public String toString() {
-		return maSinhVien + ", " + hoVaTen + ", " + queQuan +
-				", "+ format.format(ngaySinh) + (", " + gioiTinh != null ? ", Giới tính: nam" : ", Giới tính: nữ")
-				+ ", " + monHoc + ", " + + chuyenCan + ", " + giuaKy + ", "
-				+ cuoiKy + ", " + he4 + ", " + hang + ", " + he10;
-	}	
+	private static final long serialVersionUID = 1L;
 }

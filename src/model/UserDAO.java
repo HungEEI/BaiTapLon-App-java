@@ -15,8 +15,7 @@ public class UserDAO {
 		ls2.add(new User("sinhVien", "123", true));
 		ls3.add(new User("giaoVien", "123", true));
 	} 
-	
-	
+		
 	public boolean checkLogIn(String name, String pass) {
 		for(User u : ls1) {
 			

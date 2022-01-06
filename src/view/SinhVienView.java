@@ -6,9 +6,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -59,7 +62,7 @@ public class SinhVienView extends JFrame {
 		this.model = new SinhVienModel();
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\student.png"));
-		this.setSize(1236, 602);
+		this.setSize(1251, 602);
 		setResizable(false);
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -86,7 +89,7 @@ public class SinhVienView extends JFrame {
 		contentPane.add(jButton_thoat);
 
 		panel_sinhVien = new JPanel();
-		panel_sinhVien.setBounds(10, 65, 1212, 499);
+		panel_sinhVien.setBounds(10, 65, 1227, 499);
 		panel_sinhVien.setBackground(new Color(255, 228, 181));
 		contentPane.add(panel_sinhVien);
 		panel_sinhVien.setLayout(null);
@@ -152,7 +155,7 @@ public class SinhVienView extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(128, 128, 128));
-		panel.setBounds(326, 37, 886, 386);
+		panel.setBounds(326, 37, 891, 386);
 		panel_sinhVien.add(panel);
 		panel.setLayout(null);
 
@@ -169,7 +172,7 @@ public class SinhVienView extends JFrame {
 //		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 10, 886, 366);
+		scrollPane.setBounds(0, 10, 891, 366);
 		panel.add(scrollPane);
 
 		panel_1 = new JPanel();
@@ -232,12 +235,12 @@ public class SinhVienView extends JFrame {
 		jLabel_gioiTinh.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jlabel_chuyenCan = new JLabel("Chuyên Cần");
-		jlabel_chuyenCan.setBounds(10, 258, 73, 17);
+		jlabel_chuyenCan.setBounds(10, 203, 73, 17);
 		panel_1.add(jlabel_chuyenCan);
 		jlabel_chuyenCan.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		jLabel_giuaKy = new JLabel("Giữa kỳ");
-		jLabel_giuaKy.setBounds(10, 202, 66, 18);
+		jLabel_giuaKy.setBounds(10, 257, 66, 18);
 		panel_1.add(jLabel_giuaKy);
 		jLabel_giuaKy.setFont(new Font("Tahoma", Font.BOLD, 12));
 
@@ -360,13 +363,13 @@ public class SinhVienView extends JFrame {
 
 		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(222, 184, 135));
-		panel_2.setBounds(326, 433, 860, 52);
+		panel_2.setBounds(326, 433, 891, 52);
 		panel_sinhVien.add(panel_2);
 		panel_2.setLayout(null);
 
 		jButton_xoa = new JButton("Xóa");
 		jButton_xoa.addActionListener(actionListener);
-		jButton_xoa.setBounds(10, 10, 105, 35);
+		jButton_xoa.setBounds(31, 10, 105, 35);
 		panel_2.add(jButton_xoa);
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.setOpaque(true);
@@ -611,6 +614,43 @@ public class SinhVienView extends JFrame {
 	}
 
 //////---File
+	public void luuKhoaHoc() {
+		String filepath = "D:\\CodeJava\\App\\DanhSachSV.csv";
+		File file = new File(filepath);
+		 try {
+	          FileWriter fw = new FileWriter(file);
+	          BufferedWriter bw = new BufferedWriter(fw);	            
+	          for(int i = 0; i < table.getRowCount(); i++){
+	              for(int j = 0; j < table.getColumnCount(); j++){
+	                  bw.write(table.getValueAt(i, j).toString()+",");
+	              }
+	              bw.newLine();
+	          }	            
+	          bw.close();
+	          fw.close();	            
+	        } catch (IOException ex) {
+	    }  
+		 JOptionPane.showMessageDialog(this ,"Lưu thành công");
+	}
+	
+	public void xem() {
+		String filePath = "D:\\CodeJava\\App\\DanhSachSV.csv";
+        File file = new File(filePath);
+        try {
+        	 FileReader fr = new FileReader(file);
+             try (BufferedReader br = new BufferedReader(fr)) {
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				 Object[] lines = br.lines().toArray();            
+				 for(int i = 0; i < lines.length; i++){
+				     String[] row = lines[i].toString().split(",");
+				     model.addRow(row);
+				 }
+			}
+        } catch (IOException ex) {
+        	
+        }
+	}
+	
 	public void saveFile(String path) {
 		try {
 			this.model.setTenFile(path);
@@ -619,40 +659,24 @@ public class SinhVienView extends JFrame {
 			for (SinhVien sv : this.model.getDsSinhVien()) {
 				oos.writeObject(sv);
 			}
-			oos.close();
 			fos.close();
+			oos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	public void thucHienSaveFile() {
-		if (this.model.getTenFile().length() > 0) {
+		if(this.model.getTenFile().length()>0) {
 			saveFile(this.model.getTenFile());
-		} else {
+		}else {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showSaveDialog(this);
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 				saveFile(file.getAbsolutePath());
-			}
-		}
-		JOptionPane.showMessageDialog(this, "Lưu thành công!");
-	}
-
-////// CSV
-	public void fileCSV() {
-		try {
-			FileWriter writer = new FileWriter("DanhSachSinhVien.csv");
-			for (SinhVien sinhVien : this.model.getDsSinhVien()) {
-				writer.write(sinhVien.toString() + "\n");
-			}
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+			} 
 		}
 	}
-
 	public void openFile(File file) {
 		ArrayList<SinhVien> ds = new ArrayList<SinhVien>();
 		try {
@@ -660,17 +684,17 @@ public class SinhVienView extends JFrame {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			SinhVien sv = null;
-			while ((sv = (SinhVien) ois.readObject()) != null) {
+			while((sv = (SinhVien) ois.readObject())!=null) {
 				ds.add(sv);
 			}
-			ois.close();
 			fis.close();
+			ois.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		this.model.setDsSinhVien(ds);
 	}
-
+	
 	public void thucHienOpenFile() {
 		JFileChooser fc = new JFileChooser();
 		int returnVal = fc.showOpenDialog(this);
@@ -678,7 +702,7 @@ public class SinhVienView extends JFrame {
 			File file = fc.getSelectedFile();
 			openFile(file);
 			thucHienTaiLaiDuLieu();
-		}
+		} 
 	}
 
 	public void thucHienXoa() {

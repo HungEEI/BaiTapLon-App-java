@@ -13,7 +13,7 @@ public class KhoaHocModel {
 		this.luaChon = "";
 		this.tenFile = "";
 	}
-
+	
 	public ArrayList<KhoaHoc> getDsKhoaHoc() {
 		return dsKhoaHoc;
 	}

@@ -19,9 +19,12 @@ import controller.KhoaHocController;
 import model.KhoaHoc;
 import model.KhoaHocModel;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -195,21 +198,6 @@ public class KhoaHocView extends JFrame {
 		table_khoaHoc.setFont(new Font("Tahoma", Font.BOLD, 12));
 		table_khoaHoc.setModel(new DefaultTableModel(
 			new Object[][] {
-//				{"PHY1112", "Tiếng anh B1", 5, 2500000},
-//				{"PHY1109", "Xác suất thống kê", 2, 600000},
-//				{"PHY1023", "Điện và từ", 4, 1750000},
-//				{"PHY2308", "THVL đại cương 1", 2, 900000},
-//				{"PHY1107", "Giải tích 1", 2, 1550000},
-//				{"PHY1106", "Giải tích 2", 2, 1550000},
-//				{"PHY1004", "Cơ học", 2, 1500000},
-//				{"PHY1204", "Nhiệt động học", 3, 200000},
-//				{"PHY1109", "Đại số tuyến tính", 2, 1550000},
-//				{"PHI1002", "CNXH và Khoa học", 2, 1400000},
-//				{"PHY2504", "Phương pháp số", 2, 750000},
-//				{"PHY1113", "Lập trình C", 2, 950000},
-//				{"PHY2011", "Lt hướng đối tượng", 2, 1000000},
-//				{"PHY1104", "THVL đại cương 2", 2, 900000},
-//				{"PHY1202", "Triết học", 2, 755000},
 			},
 			new String[] {
 				"MÃ HỌC PHẦN", "TÊN MÔN HỌC", "SỐ TÍN", "HỌC PHÍ"
@@ -324,79 +312,43 @@ public class KhoaHocView extends JFrame {
 		for (KhoaHoc kh : this.model_kh.getDsKhoaHoc()) {
 			this.themMonHocVaoTable(kh);
 		}
-	}	
+	}
 	
-	public void saveFile(String path) {
-		try {
-			this.model_kh.setTenFile(path);
-			FileOutputStream fos = new FileOutputStream(path);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			for (KhoaHoc kh : this.model_kh.getDsKhoaHoc()) {
-				oos.writeObject(kh);				
+	public void luuKhoaHoc() {
+		String filepath = "D:\\CodeJava\\App\\KhoaHoc.csv";
+		File file = new File(filepath);
+		 try {
+	          FileWriter fw = new FileWriter(file);
+	          BufferedWriter bw = new BufferedWriter(fw);	            
+	          for(int i = 0; i < table_khoaHoc.getRowCount(); i++){
+	              for(int j = 0; j < table_khoaHoc.getColumnCount(); j++){
+	                  bw.write(table_khoaHoc.getValueAt(i, j).toString()+",");
+	              }
+	              bw.newLine();
+	          }	            
+	          bw.close();
+	          fw.close();	            
+	        } catch (IOException ex) {
+	    }  
+		 JOptionPane.showMessageDialog(this ,"Lưu thành công");
+	}
+	
+	public void xem() {
+		String filePath = "D:\\CodeJava\\App\\KhoaHoc.csv";
+        File file = new File(filePath);
+        try {
+        	 FileReader fr = new FileReader(file);
+             try (BufferedReader br = new BufferedReader(fr)) {
+				DefaultTableModel model = (DefaultTableModel) table_khoaHoc.getModel();
+				 Object[] lines = br.lines().toArray();            
+				 for(int i = 0; i < lines.length; i++){
+				     String[] row = lines[i].toString().split(",");
+				     model.addRow(row);
+				 }
 			}
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-//////CSV
-	public void fileCSV() {
-		try {
-			FileWriter writer = new FileWriter("DanhSachKhoaHoc.csv");
-				for(KhoaHoc khoaHoc : this.model_kh.getDsKhoaHoc()) {
-					writer.write(khoaHoc.toString()+ "\n");
-			}
-			writer.close();	
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-	}	
-	
-	public void thucHienSaveFile() {
-		if(this.model_kh.getTenFile().length()>0) {
-			saveFile(this.model_kh.getTenFile());
-		}else {
-			JFileChooser fc = new JFileChooser();
-			int returnVal = fc.showSaveDialog(this);
-			if (returnVal == JFileChooser.APPROVE_OPTION) {
-				File file = fc.getSelectedFile();
-				saveFile(file.getAbsolutePath());
-			} 
-		}
-		hienThiSave();
-	}
-	
-	public void openFile(File file) {
-		ArrayList<KhoaHoc> ds = new ArrayList<KhoaHoc>();
-		try {
-			this.model_kh.setTenFile(file.getAbsolutePath());
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			KhoaHoc kh = null;
-			while((kh = (KhoaHoc) ois.readObject())!=null) {
-				ds.add(kh);
-			}
-			ois.close();
-			fis.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		this.model_kh.setDsKhoaHoc(ds);
-	}
-	
-	public void thucHienOpenFile() {
-		JFileChooser fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fc.getSelectedFile();
-			openFile(file);
-			thucHienTaiLaiDuLieu();
-		} 
-	}
-	
-	public void hienThiSave() {
-		JOptionPane.showMessageDialog(this, "Lưu thành công");
+        } catch (IOException ex) {
+        	
+        }
 	}
 	
 	public void first() {

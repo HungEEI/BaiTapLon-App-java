@@ -3,9 +3,14 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
@@ -189,7 +194,7 @@ public class NhapDiemView extends JFrame {
 		panel_1.setLayout(null);
 		
 		jButton_xoa = new JButton("Xóa");
-		jButton_xoa.setBounds(34, 10, 105, 35);
+		jButton_xoa.setBounds(10, 10, 105, 35);
 		panel_1.add(jButton_xoa);
 		jButton_xoa.setBackground(Color.RED);
 		jButton_xoa.setOpaque(true);
@@ -198,7 +203,7 @@ public class NhapDiemView extends JFrame {
 		jButton_xoa.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		jButton_capNhat = new JButton("Cập nhật");
-		jButton_capNhat.setBounds(194, 10, 105, 35);
+		jButton_capNhat.setBounds(162, 10, 105, 35);
 		panel_1.add(jButton_capNhat);
 		jButton_capNhat.setBackground(Color.GREEN);
 		jButton_capNhat.setOpaque(true);
@@ -207,7 +212,7 @@ public class NhapDiemView extends JFrame {
 		jButton_capNhat.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		jButton_them = new JButton("Thêm");
-		jButton_them.setBounds(363, 10, 105, 35);
+		jButton_them.setBounds(315, 10, 105, 35);
 		panel_1.add(jButton_them);
 		jButton_them.setBackground(Color.GREEN);
 		jButton_them.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\add.png"));
@@ -215,7 +220,7 @@ public class NhapDiemView extends JFrame {
 		jButton_them.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		jButton_huyBo = new JButton("Hủy bỏ");
-		jButton_huyBo.setBounds(541, 10, 101, 35);
+		jButton_huyBo.setBounds(478, 10, 101, 35);
 		panel_1.add(jButton_huyBo);
 		jButton_huyBo.setBackground(Color.RED);
 		jButton_huyBo.setOpaque(true);
@@ -224,13 +229,20 @@ public class NhapDiemView extends JFrame {
 		jButton_huyBo.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		jButton_save = new JButton("Save");
-		jButton_save.setBounds(711, 10, 85, 35);
+		jButton_save.setBounds(621, 10, 85, 35);
 		panel_1.add(jButton_save);
 		jButton_save.setBackground(Color.CYAN);
 		jButton_save.setOpaque(true);
 		jButton_save.setIcon(new ImageIcon("D:\\CodeJava\\App\\Img\\Save.png"));
 		jButton_save.addActionListener(actionListener);
-		jButton_save.setFont(new Font("Tahoma", Font.BOLD, 12));;;;
+		jButton_save.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		jButton_file = new JButton("File");
+		jButton_file.addActionListener(actionListener);
+		jButton_file.setBackground(new Color(255, 102, 255));
+		jButton_file.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jButton_file.setBounds(736, 10, 85, 35);
+		panel_1.add(jButton_file);
 		
 		jButton_frist = new JButton("l<");
 		jButton_frist.setBounds(262, 409, 47, 21);
@@ -373,65 +385,41 @@ public class NhapDiemView extends JFrame {
 		}
 	}	
 
-////////////////----- File
-	public void saveFile(String path) {
-		try {
-			this.model.setTenFile(path);
-			FileOutputStream fos = new FileOutputStream(path);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			for (SinhVien sv : this.model.getDsSinhVien()) {
-				oos.writeObject(sv);
+	public void luuDiem() {
+		String filepath = "D:\\CodeJava\\App\\Diem.csv";
+		File file = new File(filepath);
+		 try {
+	          FileWriter fw = new FileWriter(file);
+	          BufferedWriter bw = new BufferedWriter(fw);	            
+	          for(int i = 0; i < table.getRowCount(); i++){
+	              for(int j = 0; j < table.getColumnCount(); j++){
+	                  bw.write(table.getValueAt(i, j).toString()+",");
+	              }
+	              bw.newLine();
+	          }	            
+	          bw.close();
+	          fw.close();	            
+	        } catch (IOException ex) {
+	    }  
+		 JOptionPane.showMessageDialog(this ,"Lưu thành công");
+	}
+	
+	public void xem() {
+		String filePath = "D:\\CodeJava\\App\\Diem.csv";
+        File file = new File(filePath);
+        try {
+        	 FileReader fr = new FileReader(file);
+             try (BufferedReader br = new BufferedReader(fr)) {
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				 Object[] lines = br.lines().toArray();            
+				 for(int i = 0; i < lines.length; i++){
+				     String[] row = lines[i].toString().split(",");
+				     model.addRow(row);
+				 }
 			}
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void thucHienSaveFile() {
-		if(this.model.getTenFile().length()>0) {
-			saveFile(this.model.getTenFile());
-		}else {
-			JFileChooser fc = new JFileChooser();
-			int returnVal = fc.showSaveDialog(this);
-			if (returnVal == JFileChooser.APPROVE_OPTION) {
-				File file = fc.getSelectedFile();
-				saveFile(file.getAbsolutePath());
-			} 
-		}
-		hienThiSave();
-	}
-	
-	public void openFile(File file) {
-		ArrayList<SinhVien> ds = new ArrayList<SinhVien>();
-		try {
-			this.model.setTenFile(file.getAbsolutePath());
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			SinhVien sv = null;
-			while((sv = (SinhVien) ois.readObject())!=null) {
-				ds.add(sv);
-			}
-			ois.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		this.model.setDsSinhVien(ds);
-	}
-	
-	public void thucHienOpenFile() {
-		JFileChooser fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fc.getSelectedFile();
-			openFile(file);
-			thucHienTaiLaiDuLieu();
-		} 
-	}
-	
-////////////////-----Cảnh báo	
-	public void hienThiSave() {
-		JOptionPane.showMessageDialog(this, "Lưu thành công!");
+        } catch (IOException ex) {
+        	
+        }
 	}
 	
 	public void thoatKhoiChuongTrinh() {
@@ -561,4 +549,5 @@ public class NhapDiemView extends JFrame {
 	private JLabel lblNewLabel_6;
 	private JPanel panel_1;
 	public NhapDiemModel model_nd;
+	private JButton jButton_file;
 }

@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.DangKyKhocHoc;
 import view.NhapDiemView;
 
 public class NhapDiemController implements ActionListener{
@@ -40,10 +39,10 @@ public class NhapDiemController implements ActionListener{
 			this.nhapDiemView.thoatKhoiChuongTrinh();
 			
 		}else if(cm.equals("Save")) {
-			this.nhapDiemView.thucHienSaveFile();
+			this.nhapDiemView.luuDiem();;
 			
-		}else if(cm.equals("Open")) {
-			this.nhapDiemView.thucHienOpenFile();
+		}else if(cm.equals("File")) {
+			this.nhapDiemView.xem();
 			
 		}else if(cm.equals("l<")) {
 			this.nhapDiemView.first();
@@ -56,10 +55,6 @@ public class NhapDiemController implements ActionListener{
 						
 		}else if(cm.equals(">l")) {
 			this.nhapDiemView.last();
-		}	
-		
-	}
-
-	
-	
+		}			
+	}	
 }

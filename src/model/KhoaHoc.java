@@ -55,8 +55,6 @@ public class KhoaHoc implements Serializable{
 
 	@Override
 	public String toString() {
-		return "- " + maHocPhan + ", " + monHoc + ", Số tín: " + soTin + ", Học phí: " + hocPhi + "\n";
-	}
-	
-	
+		return  maHocPhan + ", " + monHoc + ", Số tín: " + soTin + ", Học phí: " + hocPhi;
+	}	
 }

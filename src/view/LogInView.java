@@ -24,7 +24,7 @@ public class LogInView extends JFrame {
 		this.userDAO = new UserDAO();
 		setBackground(Color.WHITE);		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Home.png"));
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setSize(450, 300);
 		this.setTitle("LOG IN");
 		this.setLocationRelativeTo(null);

@@ -32,7 +32,7 @@ public class LogInGiaoVienView extends JFrame {
 		this.setSize(450, 300);
 		this.setTitle("LOG IN");
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CodeJava\\App\\Img\\Home.png"));
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();

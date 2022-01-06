@@ -3,8 +3,11 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,6 +31,8 @@ import model.KhoaHoc;
 import model.KhoaHocModel;
 import java.awt.Toolkit;
 import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DangKyHocView extends JFrame {
 
@@ -78,7 +83,7 @@ public class DangKyHocView extends JFrame {
 		scrollPane.setBounds(10, 39, 684, 154);
 		panel_ketQuaHoc.add(scrollPane);
 		
-		jButton_open = new JButton("Mở File Khóa Học");
+		jButton_open = new JButton("Khóa Học");
 		jButton_open.addActionListener(abc);
 		jButton_open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jButton_open.setForeground(Color.BLUE);
@@ -105,7 +110,7 @@ public class DangKyHocView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"", "", "", ""
+					" MÃ HỌC PHẦN", "   TÊN MÔN HỌC", "   SỐ TÍN","  HỌC PHÍ",
 			}
 		));
 		table.setRowHeight(23);
@@ -124,15 +129,27 @@ public class DangKyHocView extends JFrame {
 		jButton_huy.addActionListener(abc);
 		jButton_huy.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jButton_huy.setBackground(Color.RED);
-		jButton_huy.setBounds(538, 218, 136, 28);
+		jButton_huy.setBounds(538, 218, 136, 25);
 		panel.add(jButton_huy);
 		
 		jButton_dkh = new JButton("Lưu đăng kí học");
 		jButton_dkh.addActionListener(abc);
 		jButton_dkh.setBackground(Color.GREEN);
 		jButton_dkh.setFont(new Font("Tahoma", Font.BOLD, 12));
-		jButton_dkh.setBounds(118, 218, 136, 26);
+		jButton_dkh.setBounds(118, 218, 136, 25);
 		panel.add(jButton_dkh);
+		
+		JButton btnNewButton_1 = new JButton("Xem đăng kí học");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new DangKi();
+			}
+		});
+		btnNewButton_1.setBackground(new Color(0, 153, 204));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton_1.setBounds(328, 222, 136, 25);
+		panel.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("Đăng Ký Môn Học");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -174,42 +191,33 @@ public class DangKyHocView extends JFrame {
 		}
 	}
 	
-	public void openFile(File file) {
-		ArrayList<KhoaHoc> ds = new ArrayList<KhoaHoc>();
-		try {
-			this.model.setTenFile(file.getAbsolutePath());
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			KhoaHoc kh = null;
-			while((kh = (KhoaHoc) ois.readObject())!=null) {
-				ds.add(kh);
+	public void xem() {
+		String filePath = "D:\\CodeJava\\App\\KhoaHoc.csv";
+        File file = new File(filePath);
+        try {
+        	 FileReader fr = new FileReader(file);
+             try (BufferedReader br = new BufferedReader(fr)) {
+				DefaultTableModel model = (DefaultTableModel) table_kh.getModel();
+				 Object[] lines = br.lines().toArray();            
+				 for(int i = 0; i < lines.length; i++){
+				     String[] row = lines[i].toString().split(",");
+				     model.addRow(row);
+				 }
 			}
-			ois.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		this.model.setDsKhoaHoc(ds);
+        } catch (IOException ex) {
+        	
+        }
 	}
 	
-	public void thucHienOpenFile() {
-		JFileChooser fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fc.getSelectedFile();
-			openFile(file);
-			thucHienTaiLaiDuLieu_KH();
-		} 
-	}
-		
 	public void thoatKhoiChuongTrinh() {
 		int luaChon = JOptionPane.showConfirmDialog(
 			    this,
-			    "Bạn có muốn thoát khỏi chương trình?",
+			    "Bạn có muốn thoát?",
 			    "Thoát",
 			    JOptionPane.YES_NO_OPTION);
 		if (luaChon == JOptionPane.YES_OPTION) {
 			this.dispose();
-			new PhanCapView();
+			new ChucNangSinhVien();
 		}
 	}
 	
@@ -245,17 +253,23 @@ public class DangKyHocView extends JFrame {
 		}
 	}
 	
-	public void luuDangkiHoc() {
-		try {
-			FileWriter writer = new FileWriter("MonHocDangKi.csv");
-				for(KhoaHoc khoaHoc : this.model.getDsKhoaHoc()) {
-					writer.write(khoaHoc.toString()+ "\n");
-			}
-			writer.close();	
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-		JOptionPane.showMessageDialog(this ,"Lưu thành công");
+	public void luuDangKiHoc() {
+		String filepath = "D:\\CodeJava\\App\\MonHocDangKi.csv";
+		File file = new File(filepath);
+		 try {
+	          FileWriter fw = new FileWriter(file);
+	          BufferedWriter bw = new BufferedWriter(fw);	            
+	          for(int i = 0; i < table.getRowCount(); i++){
+	              for(int j = 0; j < table.getColumnCount(); j++){
+	                  bw.write(table.getValueAt(i, j).toString()+",");
+	              }
+	              bw.newLine();
+	          }	            
+	          bw.close();
+	          fw.close();	            
+	        } catch (IOException ex) {
+	    }  
+		 JOptionPane.showMessageDialog(this ,"Lưu thành công");
 	}
 	
 	private static final long serialVersionUID = 1L;	

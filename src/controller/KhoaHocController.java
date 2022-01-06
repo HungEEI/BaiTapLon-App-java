@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
-import view.AdminView;
 import view.KhoaHocView;
 
 public class KhoaHocController implements ActionListener{
@@ -40,11 +39,10 @@ public class KhoaHocController implements ActionListener{
 			this.khoaHocView.thucHienXoa();
 			
 		}else if(s.equals("Lưu")) {
-			this.khoaHocView.thucHienSaveFile();
-			this.khoaHocView.fileCSV();
+			this.khoaHocView.luuKhoaHoc();
 		
 		}else if(s.equals("File")) {
-			this.khoaHocView.thucHienOpenFile();
+			this.khoaHocView.xem();
 							
 		}else if(s.equals("l<")) {
 			this.khoaHocView.first();
@@ -57,10 +55,6 @@ public class KhoaHocController implements ActionListener{
 						
 		}else if(s.equals(">l")) {
 			this.khoaHocView.last();
-		}
-		
+		}		
 	}
-	
-	
-	
 }

@@ -50,7 +50,7 @@ public class SinhVienController implements ActionListener {
 			
 		}else if(cm.equals("Save")) {
 			this.sinhVienView.thucHienSaveFile();
-			this.sinhVienView.fileCSV();
+			this.sinhVienView.luuKhoaHoc();
 			
 		}else if(cm.equals("Open")) {
 			this.sinhVienView.thucHienOpenFile();

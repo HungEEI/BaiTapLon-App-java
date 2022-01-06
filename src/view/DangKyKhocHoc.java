@@ -13,8 +13,11 @@ import model.SinhVienModel;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -27,14 +30,6 @@ import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 
 public class DangKyKhocHoc extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;
-	private JTable table_kq;	
-	public SinhVienModel model;
-	private JButton jButton_open;
-	private JButton jButton_dong;
 	
 	public DangKyKhocHoc() {
 		setTitle("ĐIỂM");
@@ -85,19 +80,12 @@ public class DangKyKhocHoc extends JFrame {
 		scrollPane.setBounds(10, 39, 684, 327);
 		panel_ketQuaHoc.add(scrollPane);
 		
-		jButton_open = new JButton("Mở File Điểm");
+		jButton_open = new JButton("Điểm");
 		jButton_open.addActionListener(abc);
 		jButton_open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		jButton_open.setForeground(Color.BLUE);
 		jButton_open.setBounds(10, 0, 118, 35);
 		panel_ketQuaHoc.add(jButton_open);
-		
-		JButton jButton_dk = new JButton("Đăng Ký học");
-		jButton_dk.setFont(new Font("Tahoma", Font.BOLD, 10));
-		jButton_dk.addActionListener(abc);
-		jButton_dk.setForeground(Color.BLACK);
-		jButton_dk.setBounds(162, 10, 97, 22);
-		panel_ketQuaHoc.add(jButton_dk);
 		
 		JLabel lblNewLabel = new JLabel("Điểm");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -135,31 +123,22 @@ public class DangKyKhocHoc extends JFrame {
 		}
 	}
 	
-	public void openFile(File file) {
-		ArrayList<SinhVien> ds = new ArrayList<SinhVien>();
-		try {
-			this.model.setTenFile(file.getAbsolutePath());
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			SinhVien sv = null;
-			while((sv = (SinhVien) ois.readObject())!=null) {
-				ds.add(sv);
+	public void xem() {
+		String filePath = "D:\\CodeJava\\App\\Diem.csv";
+        File file = new File(filePath);
+        try {
+        	 FileReader fr = new FileReader(file);
+             try (BufferedReader br = new BufferedReader(fr)) {
+				DefaultTableModel model = (DefaultTableModel) table_kq.getModel();
+				 Object[] lines = br.lines().toArray();            
+				 for(int i = 0; i < lines.length; i++){
+				     String[] row = lines[i].toString().split(",");
+				     model.addRow(row);
+				 }
 			}
-			ois.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		this.model.setDsSinhVien(ds);
-	}
-	
-	public void thucHienOpenFile() {
-		JFileChooser fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fc.getSelectedFile();
-			openFile(file);
-			thucHienTaiLaiDuLieu_KQ();
-		} 
+        } catch (IOException ex) {
+        	
+        }
 	}
 	
 	public void thoatKhoiChuongTrinh() {
@@ -170,7 +149,14 @@ public class DangKyKhocHoc extends JFrame {
 			    JOptionPane.YES_NO_OPTION);
 		if (luaChon == JOptionPane.YES_OPTION) {
 			this.dispose();
-			new PhanCapView();
+			new ChucNangSinhVien();
 		}
 	}
+	
+	private static final long serialVersionUID = 1L;	
+	private JPanel contentPane;
+	private JTable table_kq;	
+	public SinhVienModel model;
+	private JButton jButton_open;
+	private JButton jButton_dong;
 }

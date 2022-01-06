@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.DangKyHocView;
 import view.DangKyKhocHoc;
 
 public class KetQuaController implements ActionListener{
@@ -22,12 +21,8 @@ public class KetQuaController implements ActionListener{
 		if(s.equals("Đóng")) {
 			this.dangKyKhocHoc.thoatKhoiChuongTrinh();
 			
-		}else if(s.equals("Mở File Điểm")) {
-			this.dangKyKhocHoc.thucHienOpenFile();
-			
-		}else if(s.equals("Đăng Ký học")) {
-			new DangKyHocView();
-			
-		}			
+		}else if(s.equals("Điểm")) {
+			this.dangKyKhocHoc.xem();
+		}		
 	}
 }
